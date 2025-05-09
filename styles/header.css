@@ -174,5 +174,95 @@
   .main-nav { display: none; }
   .mobile-menu-toggle { display: block; }
 }
+/* — Guide‑bar container — */
+.guide-bar {
+  display: flex;
+  justify-content: space-between;      /* space around dropdowns and center logo */
+  align-items: center;
+  background-color: #003150;           /* match Longines dark bar :contentReference[oaicite:0]{index=0} */
+  padding: 0.5rem 1rem;
+  color: #fff;
+}
+
+/* — Center logo+site‑title — */
+.logo-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 2;                            /* ensure it stays centered */
+}
+.logo-small {
+  width: 80px;
+  height: auto;
+}
+.site-title {
+  font-family: var(--ff-heading);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* — Dropdown wrapper & button — */
+.dropdown {
+  position: relative;
+  order: 1;
+}
+.drop-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* — Hidden menu by default — */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0;
+  min-width: 8rem;
+  z-index: 10;
+}
+
+/* — Show on hover/focus — */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* — Menu items — */
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+}
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  background-color: #f5f5f5;
+}
+
+/* — Ensure guide‑bar sticks under header — */
+.site-header + .guide-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
 
 /* End of header.css */
