@@ -1,99 +1,89 @@
-/* scripts/slider.js - Hero Slider Logic */
+/* scripts/courses.js - Dynamic Catalog Rendering & Filters (Updated with Unsplash stock image URLs) */
 
-function initSlider() {
-  const slides = Array.from(document.querySelectorAll('.hero-slider .slide'));
-  const prevBtn = document.querySelector('.slider-nav.prev');
-  const nextBtn = document.querySelector('.slider-nav.next');
-  let currentIndex = 0;
-  let autoplayTimer;
-  const AUTOPLAY_INTERVAL = 7000; // 7 seconds
+function initCourses() {
+  // Sample static data with Unsplash stock images
+  const courses = [
+    { id: 1, title: 'Conversational English', skill: 'speaking', level: 'beginner', image: 'https://source.unsplash.com/400x300/?english,conversation', description: 'Speak confidently in everyday situations.' },
+    { id: 2, title: 'Business English', skill: 'writing', level: 'advanced', image: 'https://source.unsplash.com/400x300/?business,meeting', description: 'Professional communication skills.' },
+    { id: 3, title: 'Grammar Mastery', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?grammar,books', description: 'In-depth grammar lessons.' },
+    { id: 4, title: 'Exam Prep TOEFL', skill: 'listening', level: 'advanced', image: 'https://source.unsplash.com/400x300/?toefl,exam', description: 'Get top scores on TOEFL.' },
+    { id: 5, title: 'IELTS Intensive', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?ielts,study', description: 'Comprehensive IELTS prep.' },
+    { id: 6, title: 'Writing Workshop', skill: 'writing', level: 'beginner', image: 'https://source.unsplash.com/400x300/?writing,workshop', description: 'Creative writing fundamentals.' },
+    { id: 7, title: 'Pronunciation Clinic', skill: 'speaking', level: 'advanced', image: 'https://source.unsplash.com/400x300/?pronunciation,practice', description: 'Perfect your accent.' },
+    { id: 8, title: 'Listening Lab', skill: 'listening', level: 'beginner', image: 'https://source.unsplash.com/400x300/?listening,audio', description: 'Improve comprehension skills.' }
+  ];
 
-  // Set initial state
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active', 'inactive');
-      if (i === index) {
-        slide.classList.add('active');
-        slide.setAttribute('aria-hidden', 'false');
-      } else {
-        slide.classList.add('inactive');
-        slide.setAttribute('aria-hidden', 'true');
+  // Pagination settings
+  const ITEMS_PER_PAGE = 4;
+  let currentPage = 1;
+  let filtered = [...courses];
+
+  // DOM elements
+  const grid = document.getElementById('courses-catalog');
+  const skillFilter = document.getElementById('filter-skill');
+  const levelFilter = document.getElementById('filter-level');
+  const searchInput = document.getElementById('search-courses');
+  const prevBtn = document.getElementById('prev-page');
+  const nextBtn = document.getElementById('next-page');
+  const pageInfo = document.getElementById('page-info');
+
+  // Render a page of cards
+  function renderPage(page) {
+    grid.innerHTML = '';
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+    pageItems.forEach(course => {
+      const card = document.createElement('div');
+      card.className = 'card fade-in';
+      card.innerHTML = `
+        <img src="${course.image}" alt="${course.title}" loading="lazy" />
+        <h3>${course.title}</h3>
+        <p>${course.description}</p>
+        <a href="course-detail.html?id=${course.id}" class="btn enroll">Learn More</a>
+      `;
+      grid.appendChild(card);
+    });
+    updatePagination();
+    // trigger scroll reveal for new elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      if (!el.classList.contains('visible') && el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('visible');
       }
     });
-    currentIndex = index;
   }
 
-  // Next / Prev handlers
-  function goNext() {
-    const nextIndex = (currentIndex + 1) % slides.length;
-    showSlide(nextIndex);
-  }
-  function goPrev() {
-    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(prevIndex);
+  // Update pagination buttons and info
+  function updatePagination() {
+    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE) || 1;
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
   }
 
-  // Autoplay
-  function startAutoplay() {
-    stopAutoplay();
-    autoplayTimer = setInterval(goNext, AUTOPLAY_INTERVAL);
-  }
-  function stopAutoplay() {
-    if (autoplayTimer) clearInterval(autoplayTimer);
+  // Filter logic
+  function applyFilters() {
+    const skill = skillFilter.value;
+    const level = levelFilter.value;
+    const query = searchInput.value.trim().toLowerCase();
+
+    filtered = courses.filter(c => {
+      return (skill === 'all' || c.skill === skill) &&
+             (level === 'all' || c.level === level) &&
+             (c.title.toLowerCase().includes(query) || c.description.toLowerCase().includes(query));
+    });
+    currentPage = 1;
+    renderPage(currentPage);
   }
 
   // Event listeners
-  nextBtn.addEventListener('click', () => {
-    goNext();
-    startAutoplay();
-  });
-  prevBtn.addEventListener('click', () => {
-    goPrev();
-    startAutoplay();
-  });
+  skillFilter.addEventListener('change', applyFilters);
+  levelFilter.addEventListener('change', applyFilters);
+  searchInput.addEventListener('input', debounce(applyFilters, 300));
+  prevBtn.addEventListener('click', () => { currentPage--; renderPage(currentPage); });
+  nextBtn.addEventListener('click', () => { currentPage++; renderPage(currentPage); });
 
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
-      goNext();
-      startAutoplay();
-    } else if (e.key === 'ArrowLeft') {
-      goPrev();
-      startAutoplay();
-    }
-  });
-
-  // Swipe support for touch
-  let touchStartX = 0;
-  let touchEndX = 0;
-  const threshold = 50;
-  const slider = document.querySelector('.hero-slider');
-  slider.addEventListener('touchstart', (e) => {
-    stopAutoplay();
-    touchStartX = e.changedTouches[0].screenX;
-  });
-  slider.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-    startAutoplay();
-  });
-  function handleSwipe() {
-    const diff = touchEndX - touchStartX;
-    if (Math.abs(diff) > threshold) {
-      if (diff > 0) goPrev(); else goNext();
-    }
-  }
-
-  // Initialize ARIA roles
-  slides.forEach((slide, i) => {
-    slide.setAttribute('role', 'group');
-    slide.setAttribute('aria-roledescription', 'slide');
-    slide.setAttribute('aria-label', `${i + 1} of ${slides.length}`);
-  });
-
-  // Kickoff
-  showSlide(0);
-  startAutoplay();
+  // Initialize view
+  applyFilters();
 }
 
-export { initSlider };
+export { initCourses };
