@@ -1,0 +1,151 @@
+/* styles/forms.css - Contact & Newsletter Forms */
+
+/* 1. Form Base Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+label {
+  font-size: var(--fs-sm);
+  color: var(--color-heading);
+  margin-bottom: var(--space-xs);
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-md);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(0,119,204,0.2);
+}
+
+/* 2. Textarea Specific */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* 3. Submit Buttons */
+button[type="submit"],
+input[type="submit"] {
+  align-self: flex-start;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-md);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--color-secondary-light);
+}
+
+/* 4. Form Field Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. Inline Field Group (e.g. name fields) */
+.form-row {
+  display: flex;
+  gap: var(--space-md);
+}
+.form-row .form-group {
+  flex: 1;
+}
+
+/* 6. Error & Success Messages */
+.field-error,
+.form-error {
+  color: #d9534f;
+  font-size: var(--fs-sm);
+}
+.field-success,
+.form-success {
+  color: #28a745;
+  font-size: var(--fs-sm);
+}
+
+/* 7. Newsletter Form Specific */
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.newsletter-form input[type="email"] {
+  flex: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.newsletter-form button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* 8. Privacy Notice */
+.form-privacy {
+  font-size: var(--fs-xs);
+  color: var(--color-muted);
+}
+
+/* 9. Checkbox & Radio */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: var(--space-xs);
+}
+.checkbox-group,
+.radio-group {
+  display: flex;
+  align-items: center;
+}
+
+/* 10. Captcha / Honeypot */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  aria-hidden: true;
+}
+
+/* 11. Form Loader Overlay */
+.form-loading {
+  position: relative;
+}
+.form-loading::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+}
+
+/* 12. Responsive Adjustments */
+@media (max-width: 600px) {
+  .form-row { flex-direction: column; }
+  button[type="submit"] { width: 100%; }
+}
+
+/* End of forms.css (approx. 120 lines) */
