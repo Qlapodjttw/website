@@ -1,0 +1,13 @@
+<!-- components/course-card.html -->
+<article class="course-card">
+  <a href="course-detail.html?id={{id}}" class="card-link">
+    <div class="card-image">
+      <img src="{{image}}" alt="{{title}}" loading="lazy" width="400" height="300">
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">{{title}}</h3>
+      <p class="card-desc">{{description}}</p>
+      <span class="card-meta">{{skill | capitalize}} • {{level | capitalize}}</span>
+    </div>
+  </a>
+</article>
