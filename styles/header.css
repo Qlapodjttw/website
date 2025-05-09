@@ -264,5 +264,29 @@
   top: 0;
   z-index: 50;
 }
+/* 1) Hide all dropdown menus by default */
+.guide-bar .dropdown-menu {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none !important;
+}
+
+/* 2) Show only when hovering/focusing the .dropdown container */
+.guide-bar .dropdown:hover > .dropdown-menu,
+.guide-bar .dropdown:focus-within > .dropdown-menu {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* 3) Ensure dropdown-menu sits on top */
+.guide-bar .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
 
 /* End of header.css */
