@@ -1,24 +1,49 @@
-<!-- components/header.html -->
 <header class="site-header">
   <div class="header-inner container">
+    <button id="menu-toggle" class="icon-btn" aria-label="Open menu">
+      <svg width="24" height="24"><use xlink:href="assets/svg/sprite.svg#icon-menu"/></svg>
+    </button>
     <a href="index.html" class="logo-link" aria-label="Home">
-      <svg class="logo"><use xlink:href="assets/svg/sprite.svg#logo"></use></svg>
-      <span class="visually-hidden">Elite English Academy</span>
+      <svg class="logo"><use xlink:href="assets/svg/sprite.svg#logo"/></svg>
     </a>
-    <nav class="main-nav" aria-label="Main menu">
-      <ul class="nav-list">
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-      <button id="search-toggle" class="icon-btn" aria-label="Search">
-        <svg width="24" height="24"><use xlink:href="assets/svg/sprite.svg#icon-search"></use></svg>
-      </button>
-      <button id="menu-toggle" class="icon-btn" aria-label="Menu">
-        <svg width="24" height="24"><use xlink:href="assets/svg/sprite.svg#icon-menu"></use></svg>
-      </button>
-    </div>
+    <button id="search-toggle" class="icon-btn" aria-label="Search">
+      <svg width="24" height="24"><use xlink:href="assets/svg/sprite.svg#icon-search"/></svg>
+    </button>
   </div>
+
+  <!-- GUIDE‑BAR (secondary nav) -->
+  <nav class="guide-bar">
+    <div class="dropdown">
+      <button class="drop-btn">By Skill</button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Speaking</a></li>
+        <li><a href="#">Listening</a></li>
+        <li><a href="#">Reading</a></li>
+        <li><a href="#">Writing</a></li>
+      </ul>
+    </div>
+
+    <div class="logo-center">
+      <svg class="logo-small"><use xlink:href="assets/svg/sprite.svg#logo"/></svg>
+      <span class="site-title">Elite English Academy</span>
+    </div>
+
+    <div class="dropdown">
+      <button class="drop-btn">By Level</button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Beginner</a></li>
+        <li><a href="#">Intermediate</a></li>
+        <li><a href="#">Advanced</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="drop-btn">By Exam</button>
+      <ul class="dropdown-menu">
+        <li><a href="#">TOEFL</a></li>
+        <li><a href="#">IELTS</a></li>
+        <li><a href="#">Cambridge</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
