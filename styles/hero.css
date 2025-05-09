@@ -1,0 +1,139 @@
+/* styles/hero.css - Hero Slider & Animations */
+
+/* 1. Hero Slider Container */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 80vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. Individual Slides */
+.hero-slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+}
+.hero-slider .slide.active {
+  display: flex;
+  opacity: 1;
+  z-index: 1;
+}
+.hero-slider .slide.inactive {
+  opacity: 0;
+  z-index: 0;
+}
+
+/* 3. Slide Backgrounds (example classes) */
+.slide[data-index="0"] { background-image: url('../assets/images/hero-1.jpg'); }
+.slide[data-index="1"] { background-image: url('../assets/images/hero-2.jpg'); }
+.slide[data-index="2"] { background-image: url('../assets/images/hero-3.jpg'); }
+
+/* 4. Overlay SVG Animations */
+.overlay-svg {
+  position: absolute;
+  pointer-events: none;
+  animation: floatSVG 6s ease-in-out infinite;
+}
+@keyframes floatSVG {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* 5. Hero Text Block */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: var(--space-md);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius-md);
+  text-align: center;
+  color: #fff;
+}
+.hero-text h1 {
+  font-size: var(--fs-3xl);
+  margin-bottom: var(--space-sm);
+  animation: fadeInUp 1s ease-out both;
+}
+.hero-text p {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-md);
+  animation: fadeInUp 1.2s ease-out both;
+}
+.hero-text .btn {
+  animation: fadeInUp 1.4s ease-out both;
+}
+
+/* 6. Fade In Up Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. Slider Navigation Buttons */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: var(--fs-2xl);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s;
+  z-index: 3;
+}
+.slider-nav:hover {
+  background-color: rgba(0,0,0,0.7);
+}
+.slider-nav.prev { left: var(--space-lg); }
+.slider-nav.next { right: var(--space-lg); }
+
+/* 8. Responsive Hero Text */
+@media (max-width: 1024px) {
+  .hero-text h1 { font-size: var(--fs-2xl); }
+  .hero-text p { font-size: var(--fs-md); }
+}
+@media (max-width: 768px) {
+  .hero-slider { height: 60vh; }
+  .slider-nav { display: none; }
+}
+
+/* 9. Parallax Effect Wrapper */
+.hero-slider::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-attachment: fixed;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(-1px) scale(2);
+  z-index: 0;
+}
+
+/* 10. Accessibility Focus States */
+.slider-nav:focus,
+.icon-btn:focus,
+.main-nav a:focus {
+  outline: 2px dashed var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* End of hero.css */
