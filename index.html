@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite English Academy</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/grid.css" />
+  <link rel="stylesheet" href="styles/forms.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="logo">Elite English</div>
+      <nav class="main-nav">
+        <ul class="mega-menu">
+          <li><a href="#courses">Courses</a>
+            <div class="dropdown">
+              <div class="col">
+                <h4>By Skill</h4>
+                <a href="#">Speaking</a>
+                <a href="#">Listening</a>
+                <a href="#">Reading</a>
+                <a href="#">Writing</a>
+              </div>
+              <div class="col">
+                <h4>By Level</h4>
+                <a href="#">Beginner</a>
+                <a href="#">Intermediate</a>
+                <a href="#">Advanced</a>
+              </div>
+              <div class="col">
+                <h4>By Exam</h4>
+                <a href="#">TOEFL</a>
+                <a href="#">IELTS</a>
+                <a href="#">Cambridge</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#levels">Levels</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button id="search-toggle" class="icon-btn">🔍</button>
+        <a href="#enroll" class="btn enroll">Enroll Now</a>
+      </div>
+    </div>
+    <div id="search-bar" class="search-bar hidden">
+      <div class="container">
+        <input type="text" id="search-input" placeholder="Search courses…" aria-label="Search courses" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Slider -->
+  <section class="hero-slider" id="hero-slider">
+    <div class="slide" data-index="0">
+      <div class="overlay-svg">
+        <!-- Parallax SVG decoration -->
+        <svg width="200" height="200"><circle cx="100" cy="100" r="80" fill-opacity="0.1" /></svg>
+      </div>
+      <div class="hero-text">
+        <h1>Master English with Confidence</h1>
+        <p>Interactive courses, expert tutors, proven results.</p>
+        <a href="#courses" class="btn">View Courses</a>
+      </div>
+    </div>
+    <div class="slide" data-index="1">
+      <div class="overlay-svg"><svg width="200" height="200"><rect x="10" y="10" width="180" height="180" fill-opacity="0.1" /></svg></div>
+      <div class="hero-text">
+        <h1>Boost Your Career Prospects</h1>
+        <p>Business English designed for professionals.</p>
+        <a href="#courses" class="btn">Explore Business</a>
+      </div>
+    </div>
+    <button class="slider-nav prev" aria-label="Previous slide">‹</button>
+    <button class="slider-nav next" aria-label="Next slide">›</button>
+  </section>
+
+  <!-- Featured Courses -->
+  <section id="courses" class="featured-courses container">
+    <h2>Featured Courses</h2>
+    <div class="grid" id="courses-grid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- Levels -->
+  <section id="levels" class="levels container">
+    <h2>Choose Your Level</h2>
+    <div class="level-cards">
+      <div class="level-card"><h3>Beginner</h3><p>Start from scratch</p></div>
+      <div class="level-card"><h3>Intermediate</h3><p>Build fluency</p></div>
+      <div class="level-card"><h3>Advanced</h3><p>Perfect your skills</p></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about container">
+    <h2>About Elite English</h2>
+    <p>At Elite English Academy, we combine modern pedagogy with experienced tutors to help you achieve real‑world fluency.</p>
+  </section>
+
+  <!-- Contact & Newsletter -->
+  <section id="contact" class="contact container">
+    <h2>Get in Touch</h2>
+    <!-- include newsletter form -->
+    {% include "components/newsletter.html" %}
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  {% include "components/footer.html" %}
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/menu.js"></script>
+  <script src="scripts/slider.js"></script>
+  <script src="scripts/courses.js"></script>
+  <script src="scripts/form.js"></script>
+</body>
+</html>
