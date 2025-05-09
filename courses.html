@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses - Elite English Academy</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/grid.css" />
+  <link rel="stylesheet" href="styles/responsive.css" />
+</head>
+<body>
+  <!-- Header include -->
+  {% include "components/header.html" %}
+
+  <!-- Courses Catalog -->
+  <section class="courses-page container">
+    <h1>Our Courses</h1>
+    <div class="filters">
+      <div class="filter-group">
+        <label for="filter-skill">By Skill:</label>
+        <select id="filter-skill">
+          <option value="all">All</option>
+          <option value="speaking">Speaking</option>
+          <option value="listening">Listening</option>
+          <option value="reading">Reading</option>
+          <option value="writing">Writing</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-level">By Level:</label>
+        <select id="filter-level">
+          <option value="all">All</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="search-courses">Search:</label>
+        <input type="text" id="search-courses" placeholder="Search courses..." />
+      </div>
+    </div>
+
+    <div class="grid" id="courses-catalog">
+      <!-- Course cards injected via courses.js -->
+    </div>
+
+    <div class="pagination" id="courses-pagination">
+      <button class="page-btn" id="prev-page" disabled>Previous</button>
+      <span id="page-info">Page 1 of 1</span>
+      <button class="page-btn" id="next-page" disabled>Next</button>
+    </div>
+  </section>
+
+  <!-- Footer include -->
+  {% include "components/footer.html" %}
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/menu.js"></script>
+  <script src="scripts/courses.js"></script>
+</body>
+</html>
