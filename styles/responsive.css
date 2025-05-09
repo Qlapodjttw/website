@@ -1,0 +1,100 @@
+/* styles/responsive.css - Media Queries & Breakpoints */
+
+/* Breakpoints */
+/* Mobile first approach */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .hero-slider {
+    height: 70vh;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .grid {
+    gap: var(--space-2xl);
+  }
+  .detail-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+  .form-row {
+    flex-direction: row;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .hero-text h1 {
+    font-size: var(--fs-4xl);
+  }
+  .hero-text p {
+    font-size: var(--fs-xl);
+  }
+  .slider-nav.prev {
+    left: var(--space-2xl);
+  }
+  .slider-nav.next {
+    right: var(--space-2xl);
+  }
+  .mega-menu .dropdown {
+    width: 800px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .hero-slider {
+    height: 80vh;
+  }
+}
+
+/* Adjustments for very small screens (< 360px) */
+@media (max-width: 360px) {
+  .hero-text {
+    padding: var(--space-sm);
+  }
+  .btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--fs-sm);
+  }
+  .main-nav a {
+    font-size: var(--fs-sm);
+  }
+}
+
+/* Orientation: landscape phones */
+@media (max-width: 640px) and (orientation: landscape) {
+  .hero-slider {
+    height: 50vh;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .site-header, .site-footer, .actions, .slider-nav, .mega-menu .dropdown, .pagination, .form-row button {
+    display: none !important;
+  }
+  .container, .course-detail, .courses-page {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .grid, .detail-grid {
+    display: block;
+  }
+}
+
+/* End of responsive.css (approx. 80 lines) */
