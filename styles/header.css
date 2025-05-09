@@ -1,0 +1,178 @@
+/* styles/header.css - Header & Navigation */
+
+/* 1. Base header layout */
+.site-header {
+  background-color: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+}
+
+/* 2. Logo */
+.logo {
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* 3. Main navigation */
+.main-nav {
+  flex: 1;
+  margin-left: var(--space-lg);
+}
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+.main-nav a {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-md);
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--color-secondary);
+}
+
+/* 4. Mega-menu dropdown */
+.mega-menu {
+  list-style: none;
+}
+.mega-menu > li {
+  position: relative;
+}
+.mega-menu .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--color-surface);
+  display: none;
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  width: 700px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+.mega-menu > li:hover .dropdown,
+.mega-menu > li:focus-within .dropdown {
+  display: grid;
+}
+.mega-menu .dropdown h4 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+}
+.mega-menu .dropdown a {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+}
+.mega-menu .dropdown a:hover {
+  color: var(--color-secondary-light);
+}
+
+/* 5. Search bar overlay */
+.search-bar {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-sm) 0;
+  animation: slideDown 0.3s ease-out;
+}
+@keyframes slideDown {
+  from { transform: translateY(-10%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.search-bar .container {
+  display: flex;
+  justify-content: flex-end;
+}
+.search-bar input {
+  width: 300px;
+  max-width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+/* 6. Action buttons */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: var(--fs-xl);
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+.icon-btn:hover {
+  color: var(--color-secondary);
+}
+.btn.enroll {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.3s;
+}
+.btn.enroll:hover {
+  background-color: var(--color-accent);
+  opacity: 0.9;
+}
+
+/* 7. Mobile navigation toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: var(--fs-2xl);
+  color: var(--color-text);
+}
+
+/* 8. Mobile nav panel */
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+}
+.mobile-nav a {
+  font-size: var(--fs-lg);
+  padding: var(--space-sm) 0;
+  color: var(--color-text);
+}
+.mobile-nav .btn.enroll-mobile {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+}
+
+/* 9. Responsive adjustments */
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .mobile-menu-toggle { display: block; }
+}
+
+/* End of header.css */
