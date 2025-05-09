@@ -1,4 +1,4 @@
-/* styles/hero.css - Hero Slider & Animations */
+/* styles/hero.css - Hero Slider & Animations (Updated with stock image URLs) */
 
 /* 1. Hero Slider Container */
 .hero-slider {
@@ -36,10 +36,16 @@
   z-index: 0;
 }
 
-/* 3. Slide Backgrounds (example classes) */
-.slide[data-index="0"] { background-image: url('../assets/images/hero-1.jpg'); }
-.slide[data-index="1"] { background-image: url('../assets/images/hero-2.jpg'); }
-.slide[data-index="2"] { background-image: url('../assets/images/hero-3.jpg'); }
+/* 3. Slide Backgrounds using Unsplash stock images */
+.slide[data-index="0"] {
+  background-image: url('https://source.unsplash.com/1600x900/?library,books');
+}
+.slide[data-index="1"] {
+  background-image: url('https://source.unsplash.com/1600x900/?classroom,students');
+}
+.slide[data-index="2"] {
+  background-image: url('https://source.unsplash.com/1600x900/?study,english');
+}
 
 /* 4. Overlay SVG Animations */
 .overlay-svg {
@@ -136,4 +142,4 @@
   outline-offset: 2px;
 }
 
-/* End of hero.css */
+/* End of hero.css (updated) */
