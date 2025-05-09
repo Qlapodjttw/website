@@ -1,0 +1,208 @@
+/* styles/grid.css - Collections & Card Grid */
+
+/* 1. Generic Grid Wrapper */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* 2. Featured Courses Grid */
+.featured-courses .grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* 3. Course Catalog Grid */
+.courses-page .grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: var(--space-md);
+}
+
+/* 4. Course Card */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card h3 {
+  font-size: var(--fs-xl);
+  color: var(--color-heading);
+  margin: var(--space-md);
+}
+.card p {
+  flex-grow: 1;
+  margin: 0 var(--space-md) var(--space-md);
+  color: var(--color-muted);
+}
+.card .btn {
+  margin: var(--space-md);
+  align-self: start;
+}
+
+/* 5. Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+.page-btn {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.page-btn:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+}
+.page-btn:hover:not(:disabled) {
+  background-color: var(--color-secondary-light);
+}
+#page-info {
+  font-size: var(--fs-md);
+  color: var(--color-text);
+}
+
+/* 6. Detail Page Grid */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-top: var(--space-lg);
+}
+
+/* 7. Breadcrumb */
+.breadcrumb {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--space-md);
+}
+.breadcrumb a {
+  color: var(--color-secondary);
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* 8. Gallery Thumbnails */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.main-image img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+.thumbnails {
+  display: flex;
+  gap: var(--space-sm);
+}
+.thumb {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.thumb:hover,
+.thumb.active {
+  border-color: var(--color-secondary);
+}
+
+/* 9. Tabs Layout */
+.tabs {
+  margin-top: var(--space-2xl);
+}
+.tab-nav {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--space-md);
+}
+.tab-nav li {
+  list-style: none;
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  font-size: var(--fs-md);
+  color: var(--color-text);
+  transition: color 0.2s, border-bottom 0.2s;
+}
+.tab-nav li.active {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
+}
+.tab-pane {
+  display: none;
+  padding: var(--space-md) 0;
+}
+.tab-pane.active {
+  display: block;
+}
+
+/* 10. Curriculum List */
+#curriculum-list {
+  list-style: disc inside;
+  margin-left: var(--space-md);
+}
+#curriculum-list li {
+  margin-bottom: var(--space-xs);
+}
+
+/* 11. Reviews List */
+.review-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+.review-text {
+  font-style: italic;
+  margin-bottom: var(--space-xs);
+}
+.review-author {
+  text-align: right;
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+/* 12. Level Cards */
+.level-cards .level-card {
+  width: 200px;
+  text-align: center;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.level-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 13. Utility Overrides for Grid Children */
+.grid.center { justify-content: center; }
+.grid.top { align-items: start; }
+
+/* End of grid.css (approx. 150 lines) */
