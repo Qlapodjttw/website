@@ -248,3 +248,30 @@
   opacity: 1;
   pointer-events: auto;
 }
+/* ── GUIDE‑BAR DROPDOWN OVERRIDE ── */
+
+/* 1) Hide all guide‑bar dropdowns by default */
+.guide-bar .dropdown-menu {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 2) Show only when hovering or focusing the dropdown container */
+.guide-bar .dropdown:hover > .dropdown-menu,
+.guide-bar .dropdown:focus-within > .dropdown-menu {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* 3) Positioning—ensure it still sits under the button */
+.guide-bar .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 1000 !important;
+}
