@@ -1,9 +1,6 @@
-/* scripts/main.js - Entry point (150+ lines) */
-
-// Immediately mark JS enabled for CSS hooks
+// Javascript functions
 document.documentElement.classList.add('js-enabled');
 
-// Utility: Debounce
 function debounce(fn, delay) {
   let timer = null;
   return function(...args) {
@@ -12,7 +9,6 @@ function debounce(fn, delay) {
   };
 }
 
-// Utility: Throttle
 function throttle(fn, limit) {
   let lastCall = 0;
   return function(...args) {
@@ -24,7 +20,6 @@ function throttle(fn, limit) {
   };
 }
 
-// Smooth scroll for anchor links
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -38,7 +33,6 @@ function initSmoothScroll() {
   });
 }
 
-// Sticky header hide-on-scroll
 function initStickyHeader() {
   const header = document.getElementById('site-header');
   let lastScroll = 0;
