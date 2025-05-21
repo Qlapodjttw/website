@@ -21,7 +21,7 @@ function initMenu() {
     });
   });
 
-  // Mega-menu ARIA roles & keyboard support
+  // Mega-menu click handling
   megaMenuItems.forEach(item => {
     const trigger = item.querySelector('a');
     const dropdown = item.querySelector('.dropdown');
@@ -32,15 +32,41 @@ function initMenu() {
     trigger.setAttribute('aria-expanded', 'false');
     dropdown.setAttribute('aria-hidden', 'true');
 
-    // Show on hover/focus
-    item.addEventListener('mouseenter', () => openDropdown());
-    item.addEventListener('mouseleave', () => closeDropdown());
-    trigger.addEventListener('focus', () => openDropdown());
+    // Toggle dropdown on click
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Close other open dropdowns
+      megaMenuItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('a').setAttribute('aria-expanded', 'false');
+          otherItem.querySelector('.dropdown').setAttribute('aria-hidden', 'true');
+        }
+      });
 
-    // Keyboard navigation: Esc to close
+      // Toggle current dropdown
+      const isActive = item.classList.contains('active');
+      item.classList.toggle('active');
+      trigger.setAttribute('aria-expanded', !isActive);
+      dropdown.setAttribute('aria-hidden', isActive);
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!item.contains(e.target)) {
+        item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Keyboard navigation
     trigger.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        closeDropdown();
+        item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
         trigger.focus();
       }
       if (e.key === 'ArrowDown') {
@@ -55,29 +81,7 @@ function initMenu() {
     const lastLink = links[links.length - 1];
     lastLink.addEventListener('keydown', (e) => {
       if (e.key === 'Tab' && !e.shiftKey) {
-        closeDropdown();
-      }
-    });
-
-    function openDropdown() {
-      dropdown.classList.add('open');
-      trigger.setAttribute('aria-expanded', 'true');
-      dropdown.setAttribute('aria-hidden', 'false');
-    }
-    function closeDropdown() {
-      dropdown.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-      dropdown.setAttribute('aria-hidden', 'true');
-    }
-  });
-
-  // Click outside to close any open dropdown
-  document.addEventListener('click', (e) => {
-    megaMenuItems.forEach(item => {
-      const dropdown = item.querySelector('.dropdown');
-      const trigger = item.querySelector('a');
-      if (dropdown && !item.contains(e.target)) {
-        dropdown.classList.remove('open');
+        item.classList.remove('active');
         trigger.setAttribute('aria-expanded', 'false');
         dropdown.setAttribute('aria-hidden', 'true');
       }

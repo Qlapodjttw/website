@@ -47,7 +47,8 @@
         </ul>
       </nav>
       <div class="actions">
-        <button id="search-toggle" class="icon-btn">🔍</button>
+        <button id="search-toggle" class="icon-btn">��</button>
+        <button id="mobile-menu-toggle" class="icon-btn" aria-expanded="false" aria-label="Toggle menu">☰</button>
         <a href="#enroll" class="btn enroll">Enroll Now</a>
       </div>
     </div>
@@ -56,6 +57,14 @@
         <input type="text" id="search-input" placeholder="Search courses…" aria-label="Search courses" />
       </div>
     </div>
+    <nav id="mobile-nav" class="mobile-nav hidden">
+      <ul>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#levels">Levels</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Hero Slider -->
@@ -109,23 +118,60 @@
   <!-- Contact & Newsletter -->
   <section id="contact" class="contact container">
     <h2>Get in Touch</h2>
-    <!-- include newsletter form -->
-   
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+    <div class="contact-grid">
+      <div class="newsletter">
+        <h3>Subscribe to Our Newsletter</h3>
+        <p>Stay updated with our latest courses and learning tips.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" name="email" placeholder="Your Email" required />
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+      <div class="contact-form-container">
+        <h3>Send Us a Message</h3>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
- 
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>English School</h3>
+          <p>Master English with confidence through our interactive courses and expert tutors.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#levels">Levels</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>Email: info@englishschool.com</p>
+          <p>Phone: +1 (555) 123-4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 English School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-  <script src="scripts/main.js"></script>
-  <script src="scripts/menu.js"></script>
-  <script src="scripts/slider.js"></script>
-  <script src="scripts/courses.js"></script>
-  <script src="scripts/form.js"></script>
+  <script type="module" src="scripts/main.js"></script>
+  <script type="module" src="scripts/menu.js"></script>
+  <script type="module" src="scripts/slider.js"></script>
+  <script type="module" src="scripts/courses.js"></script>
+  <script type="module" src="scripts/form.js"></script>
 </body>
 </html>

@@ -56,18 +56,29 @@
   top: 100%;
   left: 0;
   background-color: var(--color-surface);
-  display: none;
   padding: var(--space-lg);
   box-shadow: var(--shadow-md);
   width: 700px;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
-.mega-menu > li:hover .dropdown,
-.mega-menu > li:focus-within .dropdown {
+
+/* Remove hover-based display */
+.mega-menu > li:hover .dropdown {
+  display: none;
+}
+
+/* Show dropdown only when parent has 'active' class */
+.mega-menu > li.active .dropdown {
   display: grid;
+  opacity: 1;
+  visibility: visible;
 }
+
 .mega-menu .dropdown h4 {
   font-size: var(--fs-lg);
   margin-bottom: var(--space-sm);
@@ -80,6 +91,14 @@
 }
 .mega-menu .dropdown a:hover {
   color: var(--color-secondary-light);
+}
+
+/* Add focus styles for accessibility */
+.mega-menu > li > a:focus + .dropdown,
+.mega-menu > li > a:focus-within + .dropdown {
+  display: grid;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* 5. Search bar overlay */
@@ -144,27 +163,43 @@
 
 /* 8. Mobile nav panel */
 .mobile-nav {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: var(--header-height);
   left: 0;
   width: 100%;
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+  background: var(--color-surface);
   padding: var(--space-md);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
 }
+
+.mobile-nav.hidden {
+  transform: translateY(-100%);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav li {
+  margin: var(--space-sm) 0;
+}
+
 .mobile-nav a {
-  font-size: var(--fs-lg);
-  padding: var(--space-sm) 0;
+  display: block;
+  padding: var(--space-sm);
   color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--fs-lg);
+  transition: color 0.2s;
 }
-.mobile-nav .btn.enroll-mobile {
-  background-color: var(--color-accent);
-  color: #fff;
-  padding: var(--space-sm) var(--space-md);
-  text-align: center;
+
+.mobile-nav a:hover {
+  color: var(--color-secondary);
 }
 
 /* 9. Responsive adjustments */
@@ -272,4 +307,43 @@
   left: 50% !important;
   transform: translateX(-50%) !important;
   z-index: 1000 !important;
+}
+
+/* Mobile Navigation */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+  
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Contact Grid Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.newsletter {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-form-container {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
