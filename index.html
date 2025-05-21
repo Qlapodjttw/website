@@ -67,29 +67,99 @@
     </nav>
   </header>
 
-  <!-- Hero Slider -->
-  <section class="hero-slider" id="hero-slider">
-    <div class="slide" data-index="0">
-      <div class="overlay-svg">
-        <!-- Parallax SVG decoration -->
-        <svg width="200" height="200"><circle cx="100" cy="100" r="80" fill-opacity="0.1" /></svg>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-video-container">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="videos/hero-background.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="hero-content">
       <div class="hero-text">
-        <h1>Master English with Confidence</h1>
-        <p>Interactive courses, expert tutors, proven results.</p>
-        <a href="#courses" class="btn">View Courses</a>
+        <h1>Empowering Through English</h1>
+        <p class="hero-subtitle">Making language learning accessible to everyone, regardless of ability or background.</p>
+        <div class="hero-cta">
+          <a href="#programs" class="btn btn-primary">Explore Programs</a>
+          <a href="#donate" class="btn btn-secondary">Support Our Mission</a>
+        </div>
+      </div>
+      
+      <div class="impact-stories">
+        <div class="story-card active">
+          <div class="story-content">
+            <h3>Sarah's Journey</h3>
+            <p>"With the support of dedicated teachers and accessible learning materials, I've gained confidence in my English skills and found new opportunities."</p>
+            <span class="story-tag">Dyslexia Support</span>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-content">
+            <h3>Mohammed's Success</h3>
+            <p>"The visual learning approach and patient instructors helped me overcome my learning challenges and achieve my goals."</p>
+            <span class="story-tag">Visual Learning</span>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-content">
+            <h3>Emma's Achievement</h3>
+            <p>"The sign language support and inclusive environment made learning English possible for me."</p>
+            <span class="story-tag">Hearing Impaired</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="slide" data-index="1">
-      <div class="overlay-svg"><svg width="200" height="200"><rect x="10" y="10" width="180" height="180" fill-opacity="0.1" /></svg></div>
-      <div class="hero-text">
-        <h1>Boost Your Opportunities</h1>
-        <p>English designed for everyone.</p>
-        <a href="#courses" class="btn">Explore</a>
+
+    <div class="accessibility-toolbar">
+      <button class="access-btn" aria-label="Increase text size">A+</button>
+      <button class="access-btn" aria-label="Decrease text size">A-</button>
+      <button class="access-btn" aria-label="Toggle high contrast">High Contrast</button>
+      <button class="access-btn" aria-label="Toggle screen reader mode">Screen Reader</button>
+      <button class="access-btn" aria-label="Toggle dyslexia-friendly font">Dyslexia Font</button>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section id="programs" class="programs">
+    <div class="container">
+      <h2>Our Programs</h2>
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-icon">🎓</div>
+          <h3>Basic English</h3>
+          <p>Foundational English skills with personalized learning paths</p>
+          <ul class="program-features">
+            <li>Screen Reader Compatible</li>
+            <li>Sign Language Support</li>
+            <li>Visual Learning Materials</li>
+          </ul>
+          <a href="#enroll" class="btn">Learn More</a>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">💼</div>
+          <h3>Business English</h3>
+          <p>Professional communication skills for the workplace</p>
+          <ul class="program-features">
+            <li>Dyslexia-Friendly Materials</li>
+            <li>Audio Lessons</li>
+            <li>Interactive Exercises</li>
+          </ul>
+          <a href="#enroll" class="btn">Learn More</a>
+        </div>
+        <div class="program-card">
+          <div class="program-icon">🌍</div>
+          <h3>Conversational English</h3>
+          <p>Practical speaking and listening skills</p>
+          <ul class="program-features">
+            <li>Small Group Sessions</li>
+            <li>Visual Aids</li>
+            <li>Practice Partners</li>
+          </ul>
+          <a href="#enroll" class="btn">Learn More</a>
+        </div>
       </div>
     </div>
-    <button class="slider-nav prev" aria-label="Previous slide">‹</button>
-    <button class="slider-nav next" aria-label="Next slide">›</button>
   </section>
 
   <!-- Featured Courses -->
