@@ -1,46 +1,67 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const shareButtons = document.querySelectorAll('.share-btn');
-    const pageUrl = encodeURIComponent(window.location.href);
-    const pageTitle = encodeURIComponent(document.title);
+import { animationManager } from './utils.js';
 
-    // Add animation to buttons with delay
-    shareButtons.forEach((button, index) => {
-        button.style.opacity = '0';
-        setTimeout(() => {
-            button.style.opacity = '1';
-            button.classList.add('animate');
-        }, index * 100); // Stagger the animations
-    });
+class ShareManager {
+    constructor() {
+        this.shareButtons = document.querySelectorAll('.share-btn');
+        this.pageUrl = encodeURIComponent(window.location.href);
+        this.pageTitle = encodeURIComponent(document.title);
+    }
 
-    shareButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const platform = this.getAttribute('aria-label').toLowerCase();
-            let shareUrl;
+    init() {
+        this.setupShareButtons();
+        this.animateButtons();
+    }
 
-            // Add click animation
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 100);
-
-            switch(platform) {
-                case 'share on facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-                    break;
-                case 'share on twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-                    break;
-                case 'share on linkedin':
-                    shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
-                    break;
-                case 'share via email':
-                    shareUrl = `mailto:?subject=${pageTitle}&body=Check out this page: ${pageUrl}`;
-                    break;
-            }
-
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-            }
+    setupShareButtons() {
+        this.shareButtons.forEach(button => {
+            button.addEventListener('click', (e) => this.handleShare(e));
         });
-    });
+    }
+
+    animateButtons() {
+        this.shareButtons.forEach((button, index) => {
+            button.style.opacity = '0';
+            setTimeout(() => {
+                button.style.opacity = '1';
+                button.classList.add('animate');
+            }, index * 100);
+        });
+    }
+
+    handleShare(event) {
+        const button = event.currentTarget;
+        const platform = button.getAttribute('aria-label').toLowerCase();
+        
+        // Add click animation
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            button.style.transform = '';
+        }, 100);
+
+        const shareUrl = this.getShareUrl(platform);
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
+    }
+
+    getShareUrl(platform) {
+        switch(platform) {
+            case 'share on facebook':
+                return `https://www.facebook.com/sharer/sharer.php?u=${this.pageUrl}`;
+            case 'share on twitter':
+                return `https://twitter.com/intent/tweet?url=${this.pageUrl}&text=${this.pageTitle}`;
+            case 'share on linkedin':
+                return `https://www.linkedin.com/shareArticle?mini=true&url=${this.pageUrl}&title=${this.pageTitle}`;
+            case 'share via email':
+                return `mailto:?subject=${this.pageTitle}&body=Check out this page: ${this.pageUrl}`;
+            default:
+                return null;
+        }
+    }
+}
+
+// Initialize share functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const shareManager = new ShareManager();
+    shareManager.init();
 }); 

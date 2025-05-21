@@ -1,0 +1,213 @@
+/* Card Styles */
+
+/* Base Card */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--color-white);
+  background-clip: border-box;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Card Header */
+.card-header {
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
+}
+
+.card-header:first-child {
+  border-radius: calc(var(--border-radius-lg) - 1px) calc(var(--border-radius-lg) - 1px) 0 0;
+}
+
+/* Card Body */
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem;
+}
+
+/* Card Footer */
+.card-footer {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-gray-200);
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.card-footer:last-child {
+  border-radius: 0 0 calc(var(--border-radius-lg) - 1px) calc(var(--border-radius-lg) - 1px);
+}
+
+/* Card Title */
+.card-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Card Subtitle */
+.card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--color-gray-600);
+}
+
+/* Card Text */
+.card-text {
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Card Image */
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
+}
+
+.card-img-bottom {
+  width: 100%;
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+/* Card Image Overlay */
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  color: var(--color-white);
+}
+
+/* Card Groups */
+.card-group {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.5rem;
+}
+
+.card-group > .card {
+  flex: 1 0 0%;
+  margin-bottom: 0;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Card Variants */
+.card-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.card-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.card-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.card-danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+.card-warning {
+  background-color: var(--color-warning);
+  color: var(--color-text);
+}
+
+.card-info {
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+/* Card Border Variants */
+.card-border-primary {
+  border-color: var(--color-primary);
+}
+
+.card-border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.card-border-success {
+  border-color: var(--color-success);
+}
+
+.card-border-danger {
+  border-color: var(--color-danger);
+}
+
+.card-border-warning {
+  border-color: var(--color-warning);
+}
+
+.card-border-info {
+  border-color: var(--color-info);
+}
+
+/* Card Hover Effects */
+.card-hover-shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card-group {
+    flex-direction: column;
+  }
+
+  .card-group > .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-group > .card:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+} 
