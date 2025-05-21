@@ -1,22 +1,59 @@
 /* scripts/menu.js - Mega-menu & Mobile Nav */
 
+let lastScroll = 0;
+const scrollThreshold = 50; // Minimum scroll amount before hiding header
+
 function initMenu() {
   // Elements
   const mobileToggle = document.getElementById('mobile-menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   const megaMenuItems = document.querySelectorAll('.mega-menu > li');
+  const header = document.querySelector('.site-header');
+  const searchBar = document.getElementById('search-bar');
+  const searchToggle = document.getElementById('search-toggle');
+
+  // Scroll handling
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Show/hide header based on scroll direction
+    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+      // Scrolling down
+      header.classList.add('hide');
+    } else {
+      // Scrolling up
+      header.classList.remove('hide');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
+  // Search toggle
+  searchToggle.addEventListener('click', () => {
+    searchBar.classList.toggle('visible');
+    if (searchBar.classList.contains('visible')) {
+      searchBar.querySelector('input').focus();
+    }
+  });
+
+  // Close search on outside click
+  document.addEventListener('click', (e) => {
+    if (!searchBar.contains(e.target) && !searchToggle.contains(e.target)) {
+      searchBar.classList.remove('visible');
+    }
+  });
 
   // Mobile nav toggle
   mobileToggle.addEventListener('click', () => {
     const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
     mobileToggle.setAttribute('aria-expanded', !expanded);
-    mobileNav.classList.toggle('hidden');
+    mobileNav.classList.toggle('visible');
   });
 
   // Close mobile nav on link click
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileNav.classList.add('hidden');
+      mobileNav.classList.remove('visible');
       mobileToggle.setAttribute('aria-expanded', 'false');
     });
   });

@@ -2,46 +2,67 @@
 
 /* header layout */
 .site-header {
-  background-color: var(--color-surface);
-  position: sticky;
+  background-color: var(--color-text);
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
-  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
 }
+
+.site-header.hide {
+  transform: translateY(-100%);
+}
+
 .site-header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) 0;
+  padding: 1rem 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .logo {
   font-family: var(--font-serif);
   font-size: var(--fs-2xl);
-  color: var(--color-primary);
+  color: #fff;
   text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .main-nav {
   flex: 1;
-  margin-left: var(--space-lg);
+  margin-left: var(--space-xl);
 }
+
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-xl);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .main-nav a {
   position: relative;
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   font-size: var(--fs-md);
-  color: var(--color-text);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 300;
   transition: color 0.2s;
 }
+
 .main-nav a:hover,
 .main-nav a:focus {
-  color: var(--color-secondary);
+  color: var(--color-secondary-light);
 }
 
 /* 4. Mega-menu dropdown */
@@ -54,17 +75,19 @@
 .mega-menu .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  background-color: var(--color-surface);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-md);
-  width: 700px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-text);
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 800px;
   display: none;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+  gap: 2rem;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: all 0.3s ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Remove hover-based display */
@@ -80,17 +103,23 @@
 }
 
 .mega-menu .dropdown h4 {
-  font-size: var(--fs-lg);
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary);
+  font-size: var(--fs-md);
+  margin-bottom: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
 }
 .mega-menu .dropdown a {
   display: block;
-  margin-bottom: var(--space-xs);
-  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--fs-sm);
+  text-transform: none;
+  letter-spacing: 0.3px;
 }
 .mega-menu .dropdown a:hover {
-  color: var(--color-secondary-light);
+  color: #fff;
 }
 
 /* Add focus styles for accessibility */
@@ -103,53 +132,82 @@
 
 /* 5. Search bar overlay */
 .search-bar {
-  background-color: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-sm) 0;
-  animation: slideDown 0.3s ease-out;
+  background-color: var(--color-text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
-@keyframes slideDown {
-  from { transform: translateY(-10%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+
+.search-bar.visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
+
 .search-bar .container {
-  display: flex;
-  justify-content: flex-end;
+  max-width: 600px;
+  margin: 0 auto;
 }
+
 .search-bar input {
-  width: 300px;
-  max-width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  color: #fff;
+  font-size: var(--fs-md);
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  outline: none;
 }
 
 /* 6. Action buttons */
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 .icon-btn {
   background: none;
   border: none;
   font-size: var(--fs-xl);
-  color: var(--color-text);
+  color: #fff;
+  padding: 0.5rem;
+  cursor: pointer;
   transition: color 0.2s;
 }
 .icon-btn:hover {
-  color: var(--color-secondary);
+  color: var(--color-secondary-light);
 }
 .btn.enroll {
-  background-color: var(--color-accent);
+  background-color: transparent;
   color: #fff;
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-sm);
-  transition: background-color 0.3s;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #fff;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: var(--fs-sm);
+  transition: all 0.3s ease;
 }
 .btn.enroll:hover {
-  background-color: var(--color-accent);
-  opacity: 0.9;
+  background-color: #fff;
+  color: var(--color-text);
 }
 
 /* 7. Mobile navigation toggle */
@@ -163,20 +221,18 @@
 
 /* 8. Mobile nav panel */
 .mobile-nav {
+  background: var(--color-text);
+  padding: 1rem;
   position: fixed;
-  top: var(--header-height);
+  top: 100%;
   left: 0;
   width: 100%;
-  background: var(--color-surface);
-  padding: var(--space-md);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
   transform: translateY(-100%);
   transition: transform 0.3s ease;
 }
 
-.mobile-nav.hidden {
-  transform: translateY(-100%);
+.mobile-nav.visible {
+  transform: translateY(0);
 }
 
 .mobile-nav ul {
@@ -186,26 +242,30 @@
 }
 
 .mobile-nav li {
-  margin: var(--space-sm) 0;
+  margin: 0.5rem 0;
 }
 
 .mobile-nav a {
   display: block;
-  padding: var(--space-sm);
-  color: var(--color-text);
+  padding: 0.75rem;
+  color: #fff;
   text-decoration: none;
   font-size: var(--fs-lg);
-  transition: color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .mobile-nav a:hover {
-  color: var(--color-secondary);
+  color: var(--color-secondary-light);
 }
 
 /* 9. Responsive adjustments */
 @media (max-width: 768px) {
   .main-nav { display: none; }
   .mobile-menu-toggle { display: block; }
+  .site-header .container {
+    padding: 1rem;
+  }
 }
 
 /* — Guide‑bar container — */
