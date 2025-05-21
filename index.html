@@ -70,9 +70,7 @@
   <!-- Hero Section -->
   <section class="hero" id="hero">
     <div class="hero-video-container">
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="videos/hero-background.mp4" type="video/mp4">
-      </video>
+      <div class="hero-background"></div>
       <div class="hero-overlay"></div>
     </div>
     
@@ -112,11 +110,11 @@
     </div>
 
     <div class="accessibility-toolbar">
-      <button class="access-btn" aria-label="Increase text size">A+</button>
-      <button class="access-btn" aria-label="Decrease text size">A-</button>
-      <button class="access-btn" aria-label="Toggle high contrast">High Contrast</button>
-      <button class="access-btn" aria-label="Toggle screen reader mode">Screen Reader</button>
-      <button class="access-btn" aria-label="Toggle dyslexia-friendly font">Dyslexia Font</button>
+      <button id="increase-font" class="access-btn" aria-label="Increase text size">A+</button>
+      <button id="decrease-font" class="access-btn" aria-label="Decrease text size">A-</button>
+      <button id="high-contrast" class="access-btn" aria-label="Toggle high contrast">High Contrast</button>
+      <button id="screen-reader" class="access-btn" aria-label="Toggle screen reader mode">Screen Reader</button>
+      <button id="dyslexia-friendly" class="access-btn" aria-label="Toggle dyslexia-friendly font">Dyslexia Font</button>
     </div>
   </section>
 

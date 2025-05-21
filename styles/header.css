@@ -299,18 +299,45 @@
 
 /* — Dropdown wrapper & button — */
 .dropdown {
-  position: relative;
-  order: 1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 1rem;
+  display: none;
+  z-index: 1000;
+  min-width: 600px;
 }
-.drop-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font: inherit;
-  cursor: pointer;
-  padding: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+
+.mega-menu li:hover .dropdown {
+  display: flex;
+  gap: 2rem;
+}
+
+.dropdown .col {
+  flex: 1;
+}
+
+.dropdown h4 {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.dropdown a {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.dropdown a:hover {
+  color: var(--color-primary);
 }
 
 /* — SINGLE hide/show block for guide-bar dropdowns — */
