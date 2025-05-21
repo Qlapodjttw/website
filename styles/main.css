@@ -15,6 +15,14 @@
   --color-text: #222;
   --color-heading: #111;
 
+  /* Dark mode colors */
+  --dark-bg: #1a1a1a;
+  --dark-surface: #2d2d2d;
+  --dark-border: #404040;
+  --dark-text: #e0e0e0;
+  --dark-heading: #ffffff;
+  --dark-muted: #a0a0a0;
+
   /* Typography */
   --font-sans: 'Helvetica Neue', Arial, sans-serif;
   --font-serif: 'Georgia', serif;
@@ -45,6 +53,123 @@
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  --color-bg: var(--dark-bg);
+  --color-surface: var(--dark-surface);
+  --color-border: var(--dark-border);
+  --color-text: var(--dark-text);
+  --color-heading: var(--dark-heading);
+  --color-muted: var(--dark-muted);
+}
+
+body.dark-mode .site-header {
+  background-color: var(--dark-surface);
+  border-bottom: 1px solid var(--dark-border);
+}
+
+body.dark-mode .card,
+body.dark-mode .program-card,
+body.dark-mode .story-card {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .btn {
+  background-color: var(--color-secondary);
+  color: var(--dark-text);
+}
+
+body.dark-mode .btn:hover {
+  background-color: var(--color-secondary-light);
+}
+
+body.dark-mode .accessibility-toolbar {
+  background: rgba(45, 45, 45, 0.9);
+}
+
+/* Additional dark mode styles */
+body.dark-mode .mega-menu .dropdown {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+body.dark-mode .mega-menu .dropdown .col h4 {
+  color: var(--dark-heading);
+}
+
+body.dark-mode .mega-menu .dropdown .col a {
+  color: var(--dark-text);
+}
+
+body.dark-mode .mega-menu .dropdown .col a:hover {
+  color: var(--color-secondary-light);
+}
+
+body.dark-mode .search-bar {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .search-bar input {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .search-bar input::placeholder {
+  color: var(--dark-muted);
+}
+
+body.dark-mode .mobile-nav {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .mobile-nav a {
+  color: var(--dark-text);
+}
+
+body.dark-mode .mobile-nav a:hover {
+  color: var(--color-secondary-light);
+}
+
+body.dark-mode .site-footer {
+  background-color: var(--dark-surface);
+  border-top-color: var(--dark-border);
+}
+
+body.dark-mode .site-footer p {
+  color: var(--dark-muted);
+}
+
+body.dark-mode .site-footer a {
+  color: var(--color-secondary-light);
+}
+
+body.dark-mode .site-footer a:hover {
+  color: var(--color-secondary);
+}
+
+body.dark-mode .level-card {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .contact input,
+body.dark-mode .contact textarea,
+body.dark-mode .newsletter-form input {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode .contact input::placeholder,
+body.dark-mode .contact textarea::placeholder,
+body.dark-mode .newsletter-form input::placeholder {
+  color: var(--dark-muted);
 }
 
 /* 2. Reset & Base */
