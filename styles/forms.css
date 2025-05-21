@@ -88,64 +88,180 @@ input[type="submit"]:hover {
 }
 
 /* 7. Newsletter Form Specific */
+.newsletter {
+  background: var(--color-surface);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter h3 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.newsletter p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-lg);
+  font-size: var(--fs-md);
+  line-height: var(--lh-normal);
+}
+
 .newsletter-form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.newsletter-form .form-group {
+  display: flex;
   gap: var(--space-sm);
 }
+
 .newsletter-form input[type="email"] {
   flex: 1;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  padding: var(--space-md);
+  font-size: var(--fs-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
 }
+
+.newsletter-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
 .newsletter-form button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
 }
 
-/* 8. Privacy Notice */
-.form-privacy {
-  font-size: var(--fs-xs);
-  color: var(--color-muted);
+.form-note {
+  font-size: var(--fs-sm);
+  color: var(--color-text-light);
+  margin-top: var(--space-sm);
 }
 
-/* 9. Checkbox & Radio */
-input[type="checkbox"],
-input[type="radio"] {
-  width: auto;
-  margin-right: var(--space-xs);
-}
-.checkbox-group,
-.radio-group {
-  display: flex;
-  align-items: center;
+/* Contact Form */
+.contact-form-container {
+  background: var(--color-surface);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
-/* 10. Captcha / Honeypot */
-.honeypot {
-  position: absolute;
-  left: -9999px;
-  aria-hidden: true;
+.contact-form-container h3 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
 }
 
-/* 11. Form Loader Overlay */
-.form-loading {
-  position: relative;
-}
-.form-loading::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(2px);
-  z-index: 10;
+.contact-form-container .form-group {
+  margin-bottom: var(--space-md);
 }
 
-/* 12. Responsive Adjustments */
-@media (max-width: 600px) {
-  .form-row { flex-direction: column; }
-  button[type="submit"] { width: 100%; }
+.contact-form-container input,
+.contact-form-container textarea {
+  width: 100%;
+  padding: var(--space-md);
+  font-size: var(--fs-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.contact-form-container textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form-container button {
+  width: 100%;
+  padding: var(--space-md);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-2xl);
+}
+
+/* Dark Mode Styles */
+body.dark-mode .newsletter,
+body.dark-mode .contact-form-container {
+  background: var(--dark-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .newsletter h3,
+body.dark-mode .contact-form-container h3 {
+  color: var(--dark-text);
+}
+
+body.dark-mode .newsletter p,
+body.dark-mode .form-note {
+  color: var(--dark-muted);
+}
+
+body.dark-mode .newsletter-form input[type="email"],
+body.dark-mode .contact-form-container input,
+body.dark-mode .contact-form-container textarea {
+  background: var(--dark-bg);
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .contact-grid {
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter,
+  .contact-form-container {
+    padding: var(--space-xl);
+  }
+
+  .newsletter-form .form-group {
+    flex-direction: column;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter,
+  .contact-form-container {
+    padding: var(--space-lg);
+  }
 }
 
 /* End of forms.css (approx. 120 lines) */

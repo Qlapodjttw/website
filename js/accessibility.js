@@ -1,186 +1,176 @@
 // Accessibility Features
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        // Font size controls
-        const increaseFontBtn = document.getElementById('increase-font');
-        const decreaseFontBtn = document.getElementById('decrease-font');
-        const body = document.body;
-        let currentFontSize = 16; // Default font size
+document.addEventListener('DOMContentLoaded', () => {
+    const increaseFont = document.getElementById('increase-font');
+    const decreaseFont = document.getElementById('decrease-font');
+    const highContrast = document.getElementById('high-contrast');
+    const screenReader = document.getElementById('screen-reader');
+    const dyslexiaFriendly = document.getElementById('dyslexia-friendly');
+    const darkMode = document.getElementById('dark-mode');
 
-        if (!increaseFontBtn || !decreaseFontBtn) {
-            console.error('Font size control buttons not found');
-            return;
+    // Font size controls
+    let currentFontSize = 16;
+    const minFontSize = 12;
+    const maxFontSize = 24;
+
+    increaseFont?.addEventListener('click', () => {
+        if (currentFontSize < maxFontSize) {
+            currentFontSize += 2;
+            document.documentElement.style.fontSize = `${currentFontSize}px`;
         }
+    });
 
-        increaseFontBtn.addEventListener('click', () => {
-            currentFontSize = Math.min(currentFontSize + 2, 24);
-            body.style.fontSize = `${currentFontSize}px`;
-            savePreferences();
-        });
-
-        decreaseFontBtn.addEventListener('click', () => {
-            currentFontSize = Math.max(currentFontSize - 2, 12);
-            body.style.fontSize = `${currentFontSize}px`;
-            savePreferences();
-        });
-
-        // High contrast mode
-        const highContrastBtn = document.getElementById('high-contrast');
-        if (highContrastBtn) {
-            highContrastBtn.addEventListener('click', () => {
-                body.classList.toggle('high-contrast');
-                const isHighContrast = body.classList.contains('high-contrast');
-                highContrastBtn.setAttribute('aria-pressed', isHighContrast);
-                savePreferences();
-            });
+    decreaseFont?.addEventListener('click', () => {
+        if (currentFontSize > minFontSize) {
+            currentFontSize -= 2;
+            document.documentElement.style.fontSize = `${currentFontSize}px`;
         }
+    });
 
-        // Screen reader mode
-        const screenReaderBtn = document.getElementById('screen-reader');
-        if (screenReaderBtn) {
-            screenReaderBtn.addEventListener('click', () => {
-                body.classList.toggle('screen-reader-mode');
-                const isScreenReaderMode = body.classList.contains('screen-reader-mode');
-                screenReaderBtn.setAttribute('aria-pressed', isScreenReaderMode);
-                
-                // Add descriptive text for screen readers
-                if (isScreenReaderMode) {
-                    document.querySelectorAll('img').forEach(img => {
-                        if (!img.hasAttribute('alt')) {
-                            img.setAttribute('alt', 'Image');
-                        }
-                    });
-                }
-                savePreferences();
-            });
-        }
+    // High contrast mode
+    highContrast?.addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast');
+        const isHighContrast = document.body.classList.contains('high-contrast');
+        localStorage.setItem('highContrast', isHighContrast);
+    });
 
-        // Dyslexia-friendly font
-        const dyslexiaBtn = document.getElementById('dyslexia-friendly');
-        if (dyslexiaBtn) {
-            dyslexiaBtn.addEventListener('click', () => {
-                body.classList.toggle('dyslexia-friendly');
-                const isDyslexiaFriendly = body.classList.contains('dyslexia-friendly');
-                dyslexiaBtn.setAttribute('aria-pressed', isDyslexiaFriendly);
-                savePreferences();
-            });
-        }
+    // Screen reader mode
+    screenReader?.addEventListener('click', () => {
+        document.body.classList.toggle('screen-reader-mode');
+        const isScreenReader = document.body.classList.contains('screen-reader-mode');
+        localStorage.setItem('screenReader', isScreenReader);
+    });
 
-        // Dark mode toggle
-        const darkModeBtn = document.getElementById('dark-mode');
-        if (darkModeBtn) {
-            darkModeBtn.addEventListener('click', () => {
-                body.classList.toggle('dark-mode');
-                const isDarkMode = body.classList.contains('dark-mode');
-                darkModeBtn.setAttribute('aria-pressed', isDarkMode);
-                savePreferences();
-            });
-        }
+    // Dyslexia-friendly font
+    dyslexiaFriendly?.addEventListener('click', () => {
+        document.body.classList.toggle('dyslexia-friendly');
+        const isDyslexiaFriendly = document.body.classList.contains('dyslexia-friendly');
+        localStorage.setItem('dyslexiaFriendly', isDyslexiaFriendly);
+    });
 
-        // Impact Stories
-        const storyCards = document.querySelectorAll('.story-card');
-        let currentStoryIndex = 0;
-        let storyInterval;
+    // Dark mode toggle
+    darkMode?.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+    });
 
-        function showStory(index) {
-            if (!storyCards.length) return;
-            storyCards.forEach(card => card.classList.remove('active'));
-            storyCards[index].classList.add('active');
-        }
+    // Load saved preferences
+    const savedPreferences = {
+        highContrast: localStorage.getItem('highContrast') === 'true',
+        screenReader: localStorage.getItem('screenReader') === 'true',
+        dyslexiaFriendly: localStorage.getItem('dyslexiaFriendly') === 'true',
+        darkMode: localStorage.getItem('darkMode') === 'true'
+    };
 
-        // Initialize first story
-        showStory(currentStoryIndex);
-
-        // Auto-rotate stories every 5 seconds
-        function startStoryRotation() {
-            stopStoryRotation();
-            storyInterval = setInterval(() => {
-                currentStoryIndex = (currentStoryIndex + 1) % storyCards.length;
-                showStory(currentStoryIndex);
-            }, 5000);
-        }
-
-        function stopStoryRotation() {
-            if (storyInterval) {
-                clearInterval(storyInterval);
-            }
-        }
-
-        // Start story rotation if there are stories
-        if (storyCards.length > 1) {
-            startStoryRotation();
-        }
-
-        // Allow manual navigation through stories
-        storyCards.forEach((card, index) => {
-            card.addEventListener('click', () => {
-                currentStoryIndex = index;
-                showStory(currentStoryIndex);
-                // Reset the interval when manually changing stories
-                startStoryRotation();
-            });
-        });
-
-        // Save accessibility preferences
-        function savePreferences() {
-            try {
-                const preferences = {
-                    fontSize: currentFontSize,
-                    highContrast: body.classList.contains('high-contrast'),
-                    screenReader: body.classList.contains('screen-reader-mode'),
-                    dyslexiaFriendly: body.classList.contains('dyslexia-friendly'),
-                    darkMode: body.classList.contains('dark-mode')
-                };
-                localStorage.setItem('accessibilityPreferences', JSON.stringify(preferences));
-            } catch (error) {
-                console.error('Error saving preferences:', error);
-            }
-        }
-
-        // Load saved preferences
-        function loadPreferences() {
-            try {
-                const savedPreferences = localStorage.getItem('accessibilityPreferences');
-                if (savedPreferences) {
-                    const preferences = JSON.parse(savedPreferences);
-                    currentFontSize = preferences.fontSize;
-                    body.style.fontSize = `${currentFontSize}px`;
-                    
-                    if (preferences.highContrast && highContrastBtn) {
-                        body.classList.add('high-contrast');
-                        highContrastBtn.setAttribute('aria-pressed', 'true');
-                    }
-                    
-                    if (preferences.screenReader && screenReaderBtn) {
-                        body.classList.add('screen-reader-mode');
-                        screenReaderBtn.setAttribute('aria-pressed', 'true');
-                    }
-                    
-                    if (preferences.dyslexiaFriendly && dyslexiaBtn) {
-                        body.classList.add('dyslexia-friendly');
-                        dyslexiaBtn.setAttribute('aria-pressed', 'true');
-                    }
-
-                    if (preferences.darkMode && darkModeBtn) {
-                        body.classList.add('dark-mode');
-                        darkModeBtn.setAttribute('aria-pressed', 'true');
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading preferences:', error);
-            }
-        }
-
-        // Save preferences when they change
-        const buttons = [increaseFontBtn, decreaseFontBtn, highContrastBtn, screenReaderBtn, dyslexiaBtn, darkModeBtn].filter(Boolean);
-        buttons.forEach(btn => {
-            btn.addEventListener('click', savePreferences);
-        });
-
-        // Load preferences on page load
-        loadPreferences();
-
-    } catch (error) {
-        console.error('Error initializing accessibility features:', error);
+    if (savedPreferences.highContrast) {
+        document.body.classList.add('high-contrast');
     }
+    if (savedPreferences.screenReader) {
+        document.body.classList.add('screen-reader-mode');
+    }
+    if (savedPreferences.dyslexiaFriendly) {
+        document.body.classList.add('dyslexia-friendly');
+    }
+    if (savedPreferences.darkMode) {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Impact Stories
+    const storyCards = document.querySelectorAll('.story-card');
+    let currentStoryIndex = 0;
+    let storyInterval;
+
+    function showStory(index) {
+        if (!storyCards.length) return;
+        storyCards.forEach(card => card.classList.remove('active'));
+        storyCards[index].classList.add('active');
+    }
+
+    // Initialize first story
+    showStory(currentStoryIndex);
+
+    // Auto-rotate stories every 5 seconds
+    function startStoryRotation() {
+        stopStoryRotation();
+        storyInterval = setInterval(() => {
+            currentStoryIndex = (currentStoryIndex + 1) % storyCards.length;
+            showStory(currentStoryIndex);
+        }, 5000);
+    }
+
+    function stopStoryRotation() {
+        if (storyInterval) {
+            clearInterval(storyInterval);
+        }
+    }
+
+    // Start story rotation if there are stories
+    if (storyCards.length > 1) {
+        startStoryRotation();
+    }
+
+    // Allow manual navigation through stories
+    storyCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            currentStoryIndex = index;
+            showStory(currentStoryIndex);
+            // Reset the interval when manually changing stories
+            startStoryRotation();
+        });
+    });
+
+    // Save accessibility preferences
+    function savePreferences() {
+        try {
+            const preferences = {
+                fontSize: currentFontSize,
+                highContrast: document.body.classList.contains('high-contrast'),
+                screenReader: document.body.classList.contains('screen-reader-mode'),
+                dyslexiaFriendly: document.body.classList.contains('dyslexia-friendly'),
+                darkMode: document.body.classList.contains('dark-mode')
+            };
+            localStorage.setItem('accessibilityPreferences', JSON.stringify(preferences));
+        } catch (error) {
+            console.error('Error saving preferences:', error);
+        }
+    }
+
+    // Load saved preferences
+    function loadPreferences() {
+        try {
+            const savedPreferences = localStorage.getItem('accessibilityPreferences');
+            if (savedPreferences) {
+                const preferences = JSON.parse(savedPreferences);
+                currentFontSize = preferences.fontSize;
+                document.documentElement.style.fontSize = `${currentFontSize}px`;
+                
+                if (preferences.highContrast) {
+                    document.body.classList.add('high-contrast');
+                }
+                
+                if (preferences.screenReader) {
+                    document.body.classList.add('screen-reader-mode');
+                }
+                
+                if (preferences.dyslexiaFriendly) {
+                    document.body.classList.add('dyslexia-friendly');
+                }
+
+                if (preferences.darkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+        } catch (error) {
+            console.error('Error loading preferences:', error);
+        }
+    }
+
+    // Save preferences when they change
+    const buttons = [increaseFont, decreaseFont, highContrast, screenReader, dyslexiaFriendly, darkMode].filter(Boolean);
+    buttons.forEach(btn => {
+        btn.addEventListener('click', savePreferences);
+    });
+
+    // Load preferences on page load
+    loadPreferences();
 }); 

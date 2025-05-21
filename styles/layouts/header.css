@@ -219,4 +219,127 @@
   .actions {
     gap: var(--space-xs);
   }
+}
+
+/* Guide Bar */
+.guide-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary-dark);
+  padding: var(--space-sm) var(--space-xl);
+  color: var(--color-white);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.guide-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.guide-bar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.guide-bar a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+  opacity: 0.8;
+}
+
+.guide-bar a:hover {
+  color: var(--color-white);
+  opacity: 1;
+}
+
+.guide-bar .dropdown {
+  position: relative;
+}
+
+.guide-bar .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-normal);
+  z-index: var(--z-dropdown);
+}
+
+.guide-bar .dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.guide-bar .dropdown-menu a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 1;
+}
+
+.guide-bar .dropdown-menu a:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+/* Responsive Guide Bar */
+@media (max-width: 1024px) {
+  .guide-bar {
+    padding: var(--space-sm) var(--space-lg);
+  }
+
+  .guide-bar-left,
+  .guide-bar-right {
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .guide-bar {
+    display: none;
+  }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: var(--space-xs);
+  font-size: var(--fs-lg);
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .theme-toggle {
+  color: var(--color-white);
 } 

@@ -4,9 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join Us</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Main Styles -->
   <link rel="stylesheet" href="styles/main.css" />
+  <!-- Theme Script -->
+  <script src="js/theme.js" defer></script>
 </head>
 <body>
+  <div class="guide-bar">
+    <div class="guide-bar-left">
+      <a href="/about">About Us</a>
+      <div class="dropdown">
+        <a href="/programs">Programs</a>
+        <div class="dropdown-menu">
+          <a href="/programs/english">English Learning</a>
+          <a href="/programs/career">Career Development</a>
+          <a href="/programs/community">Community Support</a>
+        </div>
+      </div>
+      <a href="/impact">Our Impact</a>
+    </div>
+    <div class="guide-bar-right">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <a href="/contact">Contact</a>
+      <a href="/donate">Donate</a>
+      <a href="/volunteer">Volunteer</a>
+    </div>
+  </div>
   <!-- Header -->
   <header class="site-header" id="site-header">
     <div class="container">
@@ -308,17 +335,26 @@
         <h3>Subscribe to Our Newsletter</h3>
         <p>Stay updated with our latest courses and learning tips.</p>
         <form id="newsletter-form" class="newsletter-form">
-          <input type="email" name="email" placeholder="Your Email" required />
-          <button type="submit" class="btn">Subscribe</button>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <p class="form-note">We respect your privacy. Unsubscribe anytime.</p>
         </form>
       </div>
       <div class="contact-form-container">
         <h3>Send Us a Message</h3>
         <form id="contact-form">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <button type="submit" class="btn">Send Message</button>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
         </form>
       </div>
     </div>
@@ -332,17 +368,14 @@
           <h3>English School</h3>
           <p>Master English with confidence through our interactive courses and expert tutors.</p>
           <div class="social-links">
-            <a href="https://facebook.com" class="social-icon" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com" class="social-icon" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
             <a href="https://instagram.com" class="social-icon" aria-label="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://linkedin.com" class="social-icon" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
+            <a href="https://tiktok.com" class="social-icon" aria-label="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://threads.net" class="social-icon" aria-label="Threads">
+              <i class="fab fa-threads"></i>
             </a>
             <a href="https://youtube.com" class="social-icon" aria-label="YouTube">
               <i class="fab fa-youtube"></i>
@@ -435,19 +468,16 @@
     </button>
   </div>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Existing Scripts -->
-  <script type="module" src="scripts/main.js"></script>
-  <script type="module" src="scripts/menu.js"></script>
-  <script type="module" src="scripts/slider.js"></script>
-  <script type="module" src="scripts/courses.js"></script>
-  <script type="module" src="scripts/form.js"></script>
-  <script src="js/accessibility.js"></script>
-  <script src="js/newsletter.js"></script>
-  <script src="js/share.js"></script>
-  <script src="js/back-to-top.js"></script>
+  <!-- Scripts -->
+  <script src="js/accessibility.js" defer></script>
+  <script src="js/newsletter.js" defer></script>
+  <script src="js/share.js" defer></script>
+  <script src="js/back-to-top.js" defer></script>
+  <script type="module" src="scripts/main.js" defer></script>
+  <script type="module" src="scripts/menu.js" defer></script>
+  <script type="module" src="scripts/slider.js" defer></script>
+  <script type="module" src="scripts/courses.js" defer></script>
+  <script type="module" src="scripts/form.js" defer></script>
   <script>
     // Check for saved dark mode preference on page load
     document.addEventListener('DOMContentLoaded', function() {
