@@ -233,6 +233,8 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide);
   text-transform: uppercase;
+  position: relative;
+  z-index: var(--z-header);
 }
 
 .guide-bar-left {
@@ -250,13 +252,30 @@
 .guide-bar a {
   color: var(--color-white);
   text-decoration: none;
-  transition: color var(--transition-normal);
+  transition: all var(--transition-normal);
   opacity: 0.8;
+  padding: var(--space-xs) 0;
+  position: relative;
+}
+
+.guide-bar a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-white);
+  transition: width var(--transition-normal);
 }
 
 .guide-bar a:hover {
   color: var(--color-white);
   opacity: 1;
+}
+
+.guide-bar a:hover::after {
+  width: 100%;
 }
 
 .guide-bar .dropdown {
@@ -276,6 +295,7 @@
   transform: translateY(10px);
   transition: all var(--transition-normal);
   z-index: var(--z-dropdown);
+  padding: var(--space-sm) 0;
 }
 
 .guide-bar .dropdown:hover .dropdown-menu {
@@ -297,6 +317,52 @@
 .guide-bar .dropdown-menu a:hover {
   background-color: var(--color-bg);
   color: var(--color-primary);
+}
+
+.guide-bar .dropdown-menu a::after {
+  display: none;
+}
+
+/* Theme Toggle in Guide Bar */
+.guide-bar .theme-toggle {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: var(--space-xs);
+  font-size: var(--fs-lg);
+  opacity: 0.8;
+  transition: all var(--transition-normal);
+}
+
+.guide-bar .theme-toggle:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.guide-bar .theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-white);
+  border-radius: var(--radius-sm);
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .guide-bar {
+  background-color: var(--color-primary-darker);
+}
+
+[data-theme="dark"] .guide-bar .dropdown-menu {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .guide-bar .dropdown-menu a {
+  color: var(--color-white);
+}
+
+[data-theme="dark"] .guide-bar .dropdown-menu a:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary-light);
 }
 
 /* Responsive Guide Bar */
@@ -326,20 +392,40 @@
   padding: var(--space-xs);
   font-size: var(--fs-lg);
   opacity: 0.8;
-  transition: opacity var(--transition-normal);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
 }
 
 .theme-toggle:hover {
   opacity: 1;
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .theme-toggle:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-white);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
+}
+
+.theme-toggle i {
+  transition: transform var(--transition-normal);
+}
+
+.theme-toggle:hover i {
+  transform: rotate(15deg);
 }
 
 /* Dark Mode Adjustments */
 [data-theme="dark"] .theme-toggle {
   color: var(--color-white);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 } 
