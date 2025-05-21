@@ -387,7 +387,7 @@
 .theme-toggle {
   background: none;
   border: none;
-  color: var(--color-white);
+  color: var(--color-text);
   cursor: pointer;
   padding: var(--space-xs);
   font-size: var(--fs-lg);
@@ -404,12 +404,12 @@
 .theme-toggle:hover {
   opacity: 1;
   transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .theme-toggle:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-white);
+  box-shadow: 0 0 0 2px var(--color-text);
   border-radius: var(--radius-full);
 }
 
@@ -427,5 +427,9 @@
 }
 
 [data-theme="dark"] .theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:focus {
+  box-shadow: 0 0 0 2px var(--color-white);
 } 
