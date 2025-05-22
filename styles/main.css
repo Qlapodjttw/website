@@ -302,11 +302,11 @@ section {
   }
   
   .hero-text h1 {
-    font-size: calc(var(--fs-xxl) * 2);
+    font-size: calc(var(--fs-xxl) * 1.5);
   }
   
   .hero-subtitle {
-    font-size: var(--fs-lg);
+    font-size: calc(var(--fs-xl) * 1.8);
   }
   
   .hero-stats {
@@ -342,12 +342,12 @@ section {
   }
   
   .hero-text h1 {
-    font-size: calc(var(--fs-xl) * 2);
+    font-size: calc(var(--fs-xl) * 1.5);
     text-align: center;
   }
   
   .hero-subtitle {
-    font-size: var(--fs-base);
+    font-size: calc(var(--fs-lg) * 2);
     text-align: center;
   }
   
@@ -560,18 +560,21 @@ img {
 }
 
 .hero-text h1 {
-  font-size: calc(var(--fs-xxxl) * 2);
+  font-size: calc(var(--fs-xxxl) * 1.5);
   margin-bottom: var(--space-lg);
   animation: fadeInUp 0.8s ease-out;
   text-align: left;
   line-height: 1.2;
+  color: var(--color-text);
 }
 
 .hero-subtitle {
-  font-size: var(--fs-xl);
+  font-size: calc(var(--fs-xl) * 2);
   margin-bottom: var(--space-xl);
   animation: fadeInUp 0.8s ease-out 0.2s backwards;
   text-align: left;
+  color: var(--color-text);
+  font-weight: var(--fw-medium);
 }
 
 .hero-stats {
@@ -812,7 +815,8 @@ img {
 
 .course-description {
   margin-bottom: var(--space-lg);
-  color: var(--color-text);
+  color: #000000;
+  font-weight: var(--fw-medium);
 }
 
 .course-features {
