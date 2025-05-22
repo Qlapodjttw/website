@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OurEnglish</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Main Styles -->
@@ -91,376 +95,182 @@
 
   <!-- Hero Section -->
   <section class="hero" id="hero">
-    <div class="hero-video-container">
-      <div class="hero-background"></div>
+    <div class="hero-media">
+      <video autoplay muted loop playsinline>
+        <source src="videos/hero-background.mp4" type="video/mp4">
+      </video>
       <div class="hero-overlay"></div>
     </div>
-    
     <div class="hero-content">
       <div class="hero-text">
-        <h1>Learn English Your Way</h1>
-        <div class="hero-buttons">
-          <a href="#start" class="btn btn-primary btn-large">Start Learning</a>
-          <a href="#demo" class="btn btn-secondary btn-large">Try Demo</a>
-          <a href="#pricing" class="btn btn-outline btn-large">View Pricing</a>
-          <a href="#schedule" class="btn btn-ghost btn-large">Book a Class</a>
-        </div>
-      </div>
-      
-      <div class="impact-stories">
-        <div class="story-card active">
-          <div class="story-content">
-            <h3>Sarah's Journey</h3>
-            <p>"With the support of dedicated teachers and accessible learning materials, I've gained confidence in my English skills and found new opportunities."</p>
-            <span class="story-tag">Dyslexia Support</span>
-          </div>
-        </div>
-        <div class="story-card">
-          <div class="story-content">
-            <h3>Mohammed's Success</h3>
-            <p>"The visual learning approach and patient instructors helped me overcome my learning challenges and achieve my goals."</p>
-            <span class="story-tag">Visual Learning</span>
-          </div>
-        </div>
-        <div class="story-card">
-          <div class="story-content">
-            <h3>Emma's Achievement</h3>
-            <p>"The sign language support and inclusive environment made learning English possible for me."</p>
-            <span class="story-tag">Hearing Impaired</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="accessibility-toolbar">
-      <button id="increase-font" class="access-btn" aria-label="Increase text size">A+</button>
-      <button id="decrease-font" class="access-btn" aria-label="Decrease text size">A-</button>
-      <button id="high-contrast" class="access-btn" aria-label="Toggle high contrast">High Contrast</button>
-      <button id="screen-reader" class="access-btn" aria-label="Toggle screen reader mode">Screen Reader</button>
-      <button id="dyslexia-friendly" class="access-btn" aria-label="Toggle dyslexia-friendly font">Dyslexia Font</button>
-      <button id="dark-mode" class="access-btn" aria-label="Toggle dark mode">Dark Mode</button>
-    </div>
-  </section>
-
-  <!-- Quick Actions Section -->
-  <section class="quick-actions">
-    <div class="container">
-      <div class="action-buttons">
-        <button class="action-btn">
-          <i class="fas fa-book"></i>
-          <span>Free Lessons</span>
-        </button>
-        <button class="action-btn">
-          <i class="fas fa-users"></i>
-          <span>Join Community</span>
-        </button>
-        <button class="action-btn">
-          <i class="fas fa-certificate"></i>
-          <span>Get Certified</span>
-        </button>
-        <button class="action-btn">
-          <i class="fas fa-headphones"></i>
-          <span>Practice Speaking</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Course Showcase Section -->
-  <section class="course-showcase">
-    <div class="showcase-background">
-      <div class="background-overlay"></div>
-      <div class="background-pattern"></div>
-    </div>
-
-    <div class="container">
-      <div class="showcase-header">
-        <div class="header-content">
-          <h2>Transform Your Future</h2>
-          <p class="mission-statement">Empowering communities through accessible English education</p>
-        </div>
-        <div class="impact-stats">
-          <div class="stat-item">
+        <h1>Master English with Elegance</h1>
+        <p class="hero-subtitle">Experience the art of language learning</p>
+        <div class="hero-stats">
+          <div class="stat">
             <span class="stat-number">10,000+</span>
-            <span class="stat-label">Students Empowered</span>
+            <span class="stat-label">Students</span>
           </div>
-          <div class="stat-item">
+          <div class="stat">
             <span class="stat-number">98%</span>
             <span class="stat-label">Success Rate</span>
           </div>
-          <div class="stat-item">
+          <div class="stat">
             <span class="stat-number">24/7</span>
-            <span class="stat-label">Support Available</span>
+            <span class="stat-label">Support</span>
           </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#courses" class="btn btn-primary btn-large">Start Learning</a>
+          <a href="#demo" class="btn btn-outline btn-large">Watch Demo</a>
         </div>
       </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Discover More</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
 
-      <div class="course-navigation">
-        <div class="nav-tabs">
-          <button class="nav-tab active" data-category="all">
-            <i class="fas fa-globe"></i>
-            <span>All Programs</span>
-          </button>
-          <button class="nav-tab" data-category="beginner">
-            <i class="fas fa-seedling"></i>
-            <span>Beginner</span>
-          </button>
-          <button class="nav-tab" data-category="intermediate">
-            <i class="fas fa-tree"></i>
-            <span>Intermediate</span>
-          </button>
-          <button class="nav-tab" data-category="advanced">
-            <i class="fas fa-mountain"></i>
-            <span>Advanced</span>
-          </button>
-          <button class="nav-tab" data-category="business">
-            <i class="fas fa-briefcase"></i>
-            <span>Business</span>
-          </button>
+  <!-- Featured Courses -->
+  <section class="featured-courses">
+    <div class="section-header">
+      <h2>Our Signature Programs</h2>
+      <p>Curated learning experiences for every level</p>
+    </div>
+    <div class="course-grid">
+      <article class="course-card">
+        <div class="card-media">
+          <img src="images/basic-english.jpg" alt="Basic English Course">
+          <div class="card-overlay">
+            <button class="quick-view">Quick View</button>
+          </div>
         </div>
-        <div class="nav-controls">
-          <button class="nav-arrow prev" aria-label="Previous courses">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="nav-arrow next" aria-label="Next courses">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+        <div class="card-content">
+          <h3>Basic English</h3>
+          <p>Foundation of language mastery</p>
+          <a href="#basic" class="btn btn-outline">Learn More</a>
         </div>
+      </article>
+      <!-- Similar cards for Business and Conversational English -->
+    </div>
+  </section>
+
+  <!-- Learning Experience -->
+  <section class="learning-experience">
+    <div class="experience-grid">
+      <div class="experience-content">
+        <h2>The Art of Learning</h2>
+        <p>Immerse yourself in a world of language excellence</p>
+        <ul class="feature-list">
+          <li>
+            <i class="fas fa-graduation-cap"></i>
+            <span>Expert Instructors</span>
+          </li>
+          <li>
+            <i class="fas fa-book"></i>
+            <span>Comprehensive Curriculum</span>
+          </li>
+          <li>
+            <i class="fas fa-users"></i>
+            <span>Personalized Attention</span>
+          </li>
+        </ul>
       </div>
-
-      <div class="course-carousel">
-        <div class="carousel-track">
-          <!-- Basic English Course -->
-          <div class="course-card" data-category="beginner">
-            <div class="card-media">
-              <div class="media-overlay"></div>
-              <img src="images/basic-english.jpg" alt="Basic English Course" />
-              <div class="course-badge">Most Popular</div>
-            </div>
-            <div class="card-content">
-              <div class="course-header">
-                <h3>Basic English</h3>
-                <div class="course-rating">
-                  <i class="fas fa-star"></i>
-                  <span>4.9</span>
-                </div>
-              </div>
-              <p class="course-description">Start your journey to English fluency with our comprehensive beginner program</p>
-              <div class="course-features">
-                <div class="feature">
-                  <i class="fas fa-clock"></i>
-                  <span>8 Weeks</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-users"></i>
-                  <span>Small Groups</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-certificate"></i>
-                  <span>Certificate</span>
-                </div>
-              </div>
-              <div class="course-actions">
-                <button class="btn btn-primary">
-                  <span>Start Learning</span>
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn btn-outline">Preview Course</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Business English Course -->
-          <div class="course-card" data-category="business">
-            <div class="card-media">
-              <div class="media-overlay"></div>
-              <img src="images/business-english.jpg" alt="Business English Course" />
-              <div class="course-badge">Career Focus</div>
-            </div>
-            <div class="card-content">
-              <div class="course-header">
-                <h3>Business English</h3>
-                <div class="course-rating">
-                  <i class="fas fa-star"></i>
-                  <span>4.8</span>
-                </div>
-              </div>
-              <p class="course-description">Master professional communication for career advancement</p>
-              <div class="course-features">
-                <div class="feature">
-                  <i class="fas fa-clock"></i>
-                  <span>12 Weeks</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-user-tie"></i>
-                  <span>1-on-1</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-certificate"></i>
-                  <span>Certificate</span>
-                </div>
-              </div>
-              <div class="course-actions">
-                <button class="btn btn-primary">
-                  <span>Start Learning</span>
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn btn-outline">Preview Course</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Conversational English Course -->
-          <div class="course-card" data-category="intermediate">
-            <div class="card-media">
-              <div class="media-overlay"></div>
-              <img src="images/conversational-english.jpg" alt="Conversational English Course" />
-              <div class="course-badge">New</div>
-            </div>
-            <div class="card-content">
-              <div class="course-header">
-                <h3>Conversational English</h3>
-                <div class="course-rating">
-                  <i class="fas fa-star"></i>
-                  <span>4.7</span>
-                </div>
-              </div>
-              <p class="course-description">Develop natural fluency through practical conversation practice</p>
-              <div class="course-features">
-                <div class="feature">
-                  <i class="fas fa-clock"></i>
-                  <span>10 Weeks</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-comments"></i>
-                  <span>Group Practice</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-certificate"></i>
-                  <span>Certificate</span>
-                </div>
-              </div>
-              <div class="course-actions">
-                <button class="btn btn-primary">
-                  <span>Start Learning</span>
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn btn-outline">Preview Course</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Exam Preparation Course -->
-          <div class="course-card" data-category="advanced">
-            <div class="card-media">
-              <div class="media-overlay"></div>
-              <img src="images/exam-prep.jpg" alt="Exam Preparation Course" />
-              <div class="course-badge">Advanced</div>
-            </div>
-            <div class="card-content">
-              <div class="course-header">
-                <h3>Exam Preparation</h3>
-                <div class="course-rating">
-                  <i class="fas fa-star"></i>
-                  <span>4.9</span>
-                </div>
-              </div>
-              <p class="course-description">Comprehensive preparation for TOEFL, IELTS, and Cambridge exams</p>
-              <div class="course-features">
-                <div class="feature">
-                  <i class="fas fa-clock"></i>
-                  <span>16 Weeks</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>Private</span>
-                </div>
-                <div class="feature">
-                  <i class="fas fa-certificate"></i>
-                  <span>Certificate</span>
-                </div>
-              </div>
-              <div class="course-actions">
-                <button class="btn btn-primary">
-                  <span>Start Learning</span>
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn btn-outline">Preview Course</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="experience-media">
+        <img src="images/learning-experience.jpg" alt="Learning Experience">
       </div>
+    </div>
+  </section>
 
-      <div class="showcase-footer">
-        <div class="cta-section">
-          <h3>Ready to Start Your Journey?</h3>
-          <p>Join thousands of students who have transformed their lives through our programs</p>
-          <div class="cta-buttons">
-            <button class="btn btn-primary btn-large">
-              <i class="fas fa-graduation-cap"></i>
-              <span>Enroll Now</span>
-            </button>
-            <button class="btn btn-outline btn-large">
-              <i class="fas fa-info-circle"></i>
-              <span>Learn More</span>
-            </button>
+  <!-- Course Showcase -->
+  <section class="course-showcase">
+    <div class="showcase-header">
+      <h2>Explore Our Collection</h2>
+      <p class="showcase-subtitle">Curated programs designed for your success</p>
+      <div class="showcase-nav">
+        <button class="nav-btn active" data-category="all">All Courses</button>
+        <button class="nav-btn" data-category="beginner">Beginner</button>
+        <button class="nav-btn" data-category="intermediate">Intermediate</button>
+        <button class="nav-btn" data-category="advanced">Advanced</button>
+      </div>
+    </div>
+    <div class="showcase-grid">
+      <article class="course-card" data-category="beginner">
+        <div class="card-media">
+          <img src="images/basic-english.jpg" alt="Basic English Course">
+          <div class="card-overlay">
+            <button class="quick-view">Quick View</button>
+          </div>
+          <div class="course-badge">Most Popular</div>
+        </div>
+        <div class="card-content">
+          <div class="course-header">
+            <h3>Basic English</h3>
+            <div class="course-rating">
+              <i class="fas fa-star"></i>
+              <span>4.9</span>
+            </div>
+          </div>
+          <p class="course-description">Master the fundamentals with our comprehensive beginner program</p>
+          <div class="course-features">
+            <div class="feature">
+              <i class="fas fa-clock"></i>
+              <span>8 Weeks</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-users"></i>
+              <span>Small Groups</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-certificate"></i>
+              <span>Certificate</span>
+            </div>
+          </div>
+          <div class="course-actions">
+            <a href="#enroll" class="btn btn-primary">Start Learning</a>
+            <button class="btn btn-outline preview-btn">Preview Course</button>
           </div>
         </div>
-        <div class="trust-badges">
-          <div class="badge">
-            <i class="fas fa-shield-alt"></i>
-            <span>100% Free</span>
-          </div>
-          <div class="badge">
-            <i class="fas fa-hand-holding-heart"></i>
-            <span>Community Support</span>
-          </div>
-          <div class="badge">
-            <i class="fas fa-globe-americas"></i>
-            <span>Global Access</span>
-          </div>
+      </article>
+      <!-- Similar cards for other courses -->
+    </div>
+    <div class="showcase-footer">
+      <div class="trust-badges">
+        <div class="badge">
+          <i class="fas fa-shield-alt"></i>
+          <span>100% Free Trial</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span>Community Support</span>
+        </div>
+        <div class="badge">
+          <i class="fas fa-globe-americas"></i>
+          <span>Global Access</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="about container">
-    <h2>About Us</h2>
-    <p>We combine modern pedagogy with experienced tutors to help you achieve real‑world fluency.</p>
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="testimonial-slider">
+      <div class="testimonial-slide">
+        <div class="testimonial-content">
+          <p>"A transformative journey in language learning"</p>
+          <cite>- Sarah Johnson</cite>
+        </div>
+      </div>
+      <!-- More testimonials -->
+    </div>
   </section>
 
-  <!-- Contact & Newsletter -->
-  <section id="contact" class="contact container">
-    <h2>Get in Touch</h2>
-    <div class="contact-grid">
-      <div class="newsletter">
-        <h3>Subscribe to Our Newsletter</h3>
-        <p>Stay updated with our latest courses and learning tips.</p>
-        <form id="newsletter-form" class="newsletter-form">
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email" required />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </div>
-          <p class="form-note">We respect your privacy. Unsubscribe anytime.</p>
-        </form>
-      </div>
-      <div class="contact-form-container">
-        <h3>Send Us a Message</h3>
-        <form id="contact-form">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required />
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email" required />
-          </div>
-          <div class="form-group">
-            <textarea name="message" placeholder="Your Message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-      </div>
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Begin Your Journey</h2>
+      <p>Join thousands of successful learners</p>
+      <a href="#enroll" class="btn btn-primary btn-large">Start Learning Today</a>
     </div>
   </section>
 
