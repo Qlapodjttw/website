@@ -1,90 +1,101 @@
 document.addEventListener('DOMContentLoaded', function() {
   const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
-  const categoryBtns = document.querySelectorAll('.category-btn');
+  const dotsContainer = document.querySelector('.carousel-dots');
   
-  let currentPosition = 0;
-  const cardWidth = 300; // Width of each card including gap
-  const cardsPerView = Math.floor(window.innerWidth / cardWidth);
-  const totalCards = document.querySelectorAll('.course-card').length;
+  let currentIndex = 0;
+  const slideCount = slides.length;
   
-  // Update cards per view on window resize
-  window.addEventListener('resize', () => {
-    const newCardsPerView = Math.floor(window.innerWidth / cardWidth);
-    if (newCardsPerView !== cardsPerView) {
-      location.reload();
-    }
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
   });
-
-  // Navigation buttons
-  prevBtn.addEventListener('click', () => {
-    if (currentPosition < 0) {
-      currentPosition += cardWidth;
-      track.style.transform = `translateX(${currentPosition}px)`;
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    const maxPosition = -(cardWidth * (totalCards - cardsPerView));
-    if (currentPosition > maxPosition) {
-      currentPosition -= cardWidth;
-      track.style.transform = `translateX(${currentPosition}px)`;
-    }
-  });
-
-  // Category filtering
-  categoryBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active class from all buttons
-      categoryBtns.forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
-      btn.classList.add('active');
-      
-      // Filter cards based on category
-      const category = btn.textContent.toLowerCase();
-      const cards = document.querySelectorAll('.course-card');
-      
-      cards.forEach(card => {
-        const cardLevel = card.querySelector('.course-level').textContent.toLowerCase();
-        if (category === 'all courses' || cardLevel === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-      
-      // Reset carousel position
-      currentPosition = 0;
-      track.style.transform = 'translateX(0)';
+  
+  const dots = document.querySelectorAll('.dot');
+  
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
     });
+  }
+  
+  function goToSlide(index) {
+    currentIndex = index;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+  }
+  
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    goToSlide(currentIndex);
+  }
+  
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+    goToSlide(currentIndex);
+  }
+  
+  // Event listeners
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  
+  // Auto-advance slides
+  let slideInterval = setInterval(nextSlide, 5000);
+  
+  // Pause auto-advance on hover
+  track.addEventListener('mouseenter', () => {
+    clearInterval(slideInterval);
   });
-
-  // Touch/Swipe support
+  
+  track.addEventListener('mouseleave', () => {
+    slideInterval = setInterval(nextSlide, 5000);
+  });
+  
+  // Touch support
   let touchStartX = 0;
   let touchEndX = 0;
-
+  
   track.addEventListener('touchstart', e => {
     touchStartX = e.changedTouches[0].screenX;
   });
-
+  
   track.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
   });
-
+  
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-
+    
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
-        // Swipe left
-        nextBtn.click();
+        nextSlide();
       } else {
-        // Swipe right
-        prevBtn.click();
+        prevSlide();
       }
     }
   }
+  
+  // Course Selection Buttons
+  const courseButtons = document.querySelectorAll('.course-btn');
+  
+  courseButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      courseButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      // Here you can add logic to show/hide relevant course content
+      const courseType = button.dataset.course;
+      // Example: updateCourseContent(courseType);
+    });
+  });
 }); 
