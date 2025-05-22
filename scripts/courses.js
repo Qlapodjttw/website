@@ -4,12 +4,12 @@ function initCourses() {
   // Sample static data with Unsplash stock images
   const courses = [
     { id: 1, title: 'Conversational English', skill: 'speaking', level: 'beginner', image: 'https://source.unsplash.com/400x300/?english,conversation', description: 'Speak confidently in everyday situations.' },
-    { id: 2, title: 'Business English', skill: 'writing', level: 'advanced', image: 'https://source.unsplash.com/400x300/?business,meeting', description: 'Professional communication skills.' },
-    { id: 3, title: 'Grammar Mastery', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?grammar,books', description: 'In-depth grammar lessons.' },
-    { id: 4, title: 'Exam Prep TOEFL', skill: 'listening', level: 'advanced', image: 'https://source.unsplash.com/400x300/?toefl,exam', description: 'Get top scores on TOEFL.' },
-    { id: 5, title: 'IELTS Intensive', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?ielts,study', description: 'Comprehensive IELTS prep.' },
+    { id: 2, title: 'Business English', skill: 'writing', level: 'advanced', image: 'https://source.unsplash.com/400x300/?business,meeting', description: 'Master professional communication with advanced business writing, negotiation skills, and corporate presentation techniques. Perfect for executives and professionals.' },
+    { id: 3, title: 'Grammar Mastery', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?grammar,books', description: 'Deep dive into complex grammar structures, advanced tenses, and nuanced language patterns. Build a solid foundation for academic and professional success.' },
+    { id: 4, title: 'Exam Prep TOEFL', skill: 'listening', level: 'advanced', image: 'https://source.unsplash.com/400x300/?toefl,exam', description: 'Comprehensive TOEFL preparation with advanced listening comprehension, academic vocabulary, and test-taking strategies. Achieve your target score with expert guidance.' },
+    { id: 5, title: 'IELTS Intensive', skill: 'reading', level: 'intermediate', image: 'https://source.unsplash.com/400x300/?ielts,study', description: 'Develop advanced reading comprehension skills, critical analysis, and time management techniques. Perfect for students aiming for Band 6.5+ in IELTS.' },
     { id: 6, title: 'Writing Workshop', skill: 'writing', level: 'beginner', image: 'https://source.unsplash.com/400x300/?writing,workshop', description: 'Creative writing fundamentals.' },
-    { id: 7, title: 'Pronunciation Clinic', skill: 'speaking', level: 'advanced', image: 'https://source.unsplash.com/400x300/?pronunciation,practice', description: 'Perfect your accent.' },
+    { id: 7, title: 'Pronunciation Clinic', skill: 'speaking', level: 'advanced', image: 'https://source.unsplash.com/400x300/?pronunciation,practice', description: 'Perfect your accent with advanced phonetics, intonation patterns, and native-like pronunciation. Ideal for professionals and public speakers.' },
     { id: 8, title: 'Listening Lab', skill: 'listening', level: 'beginner', image: 'https://source.unsplash.com/400x300/?listening,audio', description: 'Improve comprehension skills.' }
   ];
 
