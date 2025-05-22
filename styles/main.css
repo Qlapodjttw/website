@@ -292,12 +292,24 @@ section {
     padding: 0 var(--space-lg);
   }
   
+  .hero-content {
+    padding: var(--space-xl) var(--space-lg);
+  }
+  
+  .hero-text {
+    padding: var(--space-lg);
+  }
+  
   .hero-text h1 {
     font-size: var(--fs-3xl);
   }
   
   .hero-subtitle {
     font-size: var(--fs-lg);
+  }
+  
+  .hero-stats {
+    gap: var(--space-xl);
   }
   
   .showcase-grid {
@@ -312,23 +324,28 @@ section {
   
   .hero-content {
     padding: var(--space-xl) var(--space-md);
+    justify-content: center;
   }
   
   .hero-text {
     padding: var(--space-lg);
+    text-align: center;
   }
   
   .hero-text h1 {
     font-size: var(--fs-2xl);
+    text-align: center;
   }
   
   .hero-subtitle {
     font-size: var(--fs-base);
+    text-align: center;
   }
   
   .hero-stats {
     flex-direction: column;
     gap: var(--space-lg);
+    align-items: center;
   }
   
   .hero-cta {
@@ -510,33 +527,38 @@ img {
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding: var(--space-2xl) var(--space-lg);
-  text-align: center;
+  text-align: left;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .hero-text {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: var(--space-xl);
+  max-width: 800px;
+  margin: 0;
+  padding: var(--space-xl) var(--space-xxl);
+  text-align: left;
 }
 
 .hero-text h1 {
   font-size: var(--fs-4xl);
   margin-bottom: var(--space-lg);
   animation: fadeInUp 0.8s ease-out;
+  text-align: left;
 }
 
 .hero-subtitle {
   font-size: var(--fs-xl);
   margin-bottom: var(--space-xl);
   animation: fadeInUp 0.8s ease-out 0.2s backwards;
+  text-align: left;
 }
 
 .hero-stats {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-2xl);
   margin-bottom: var(--space-2xl);
   animation: fadeInUp 0.8s ease-out 0.4s backwards;
@@ -544,7 +566,7 @@ img {
 
 .hero-cta {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-lg);
   animation: fadeInUp 0.8s ease-out 0.6s backwards;
 }
